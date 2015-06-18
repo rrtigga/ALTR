@@ -1,10 +1,9 @@
-def main():
-	#need to use raw_input for non-python-3
-	for i, line in enumerate("jacks.txt"):
-	    if i == 0:
-	        output.write(line)
-	    else:
-	        if not line.startswith('#'):
-	            output.write(line)
+input_file = open("jacks.txt", "r")
+output = open("output.txt", "w")
+for i, line in enumerate(input_file):
+    if i == 0:
+        output.write(line)
+    else:
+        if not line.startswith('status'):
+            output.write(line)
 
-main()

@@ -1,0 +1,204 @@
+
+Aggregate                total       used      avail capacity
+aggr0_sj_itcrncnas01_01  367GB      251GB      115GB      68%
+aggr0_sj_itcrncnas01_02  367GB      251GB      115GB      68%
+n01_450_sas_01         51431GB    34327GB    17103GB      67%
+n01_sas_450_sap_01      7714GB        0GB     7714GB       0%
+n01_sata_1000_01       93857GB    74975GB    18881GB      80%
+n02_600_sas_01         82684GB    34988GB    47695GB      42%
+n02_sata_1000_01       93857GB    63547GB    30310GB      68%
+n02_sata_1000_02       67041GB    31874GB    35167GB      48%
+8 entries were displayed.
+ 
+Filer: sj-itdrncnas01 ...
+Aggregate                total       used      avail capacity
+aggr0_sj_itdrncnas01_01 1490GB      502GB      987GB      34%
+n01_sata_1000_01       53633GB       10GB    53622GB       0%
+n01_sata_2000_01      134112GB    64809GB    69303GB      48%
+3 entries were displayed.
+ 
+Filer: sj-itencnas01 ...
+Aggregate                total       used      avail capacity
+aggr0_sj_itencnas01_01   492GB      301GB      190GB      61%
+aggr0_sj_itencnas01_02   492GB      301GB      190GB      61%
+aggr0_sj_itencnas01_03  1490GB      502GB      987GB      34%
+aggr0_sj_itencnas01_04  1490GB      502GB      987GB      34%
+aggr0_sj_itencnas01_05  1004GB      502GB      501GB      50%
+aggr0_sj_itencnas01_06  1004GB      502GB      501GB      50%
+n01_sas_600_01         16733GB    11778GB     4955GB      70%
+n01_sata_1000_01       26816GB    18466GB     8349GB      69%
+n02_sas_450_01         38573GB    11862GB    26711GB      31%
+n02_sas_900_01         31634GB    29376GB     2258GB      93%
+n03_arch_sata_4000_01  60240GB        0GB    60240GB       0%
+n03_sata_2000_01       87918GB    73451GB    14466GB      84%
+n04_ice_sata_4000_01  200801GB        0GB   200801GB       0%
+n04_sata_2000_01       87918GB    51671GB    36246GB      59%
+n05_ice_sas_1200_01    17068GB        1GB    17067GB       0%
+n05_loaner_sas_01     172688GB        0GB   172688GB       0%
+n06_ice_sas_1200_01    17068GB        0GB    17068GB       0%
+n06_loaner_sata_01    238730GB        0GB   238730GB       0%
+18 entries were displayed.
+ 
+Filer: pg-itencnas01 ...
+Aggregate                total       used      avail capacity
+aggr0_pg_itencnas01_01   492GB      301GB      190GB      61%
+aggr0_pg_itencnas01_02  1102GB      301GB      800GB      27%
+aggr0_pg_itencnas01_03  1490GB      301GB     1188GB      20%
+aggr0_pg_itencnas01_04  1490GB      301GB     1188GB      20%
+aggr0_pg_itencnas01_05  1004GB      301GB      702GB      30%
+aggr0_pg_itencnas01_06  1004GB      301GB      702GB      30%
+n01_sas_450_01         22041GB    10966GB    11075GB      50%
+n01_sas_600_01         18702GB    13044GB     5658GB      70%
+n01_sata_1000_01       40224GB    15778GB    24445GB      39%
+n02_sas_450_01         51431GB    36571GB    14859GB      71%
+n03_arch_sata_4000_01  60240GB        0GB    60240GB       0%
+n03_sata_2000_01       87918GB    74188GB    13729GB      84%
+n04_ice_sata_4000_01  133867GB        0GB   133867GB       0%
+n04_sata_2000_01       87918GB    77451GB    10466GB      88%
+n05_ice_sas_1200_01    17068GB       23GB    17044GB       0%
+n05_loaner_sas_01     301200GB        0GB   301200GB       0%
+n06_ice_sas_1200_01    17068GB        2GB    17065GB       0%
+n06_loaner_sata_01    287815GB    11207GB   276607GB       4%
+18 entries were displayed.
+ 
+Filer: pg-itcrncnas01 ...
+Aggregate                total       used      avail capacity
+aggr0_pg_itcrncnas01_01  367GB      251GB      115GB      68%
+aggr0_pg_itcrncnas01_02  367GB      251GB      115GB      68%
+n01_sas_450_01         54002GB    41308GB    12694GB      76%
+n01_sata_1000_01       43204GB    28241GB    14963GB      65%
+n02_sas_450_01         45920GB    31428GB    14491GB      68%
+n02_sata_1000_01       59592GB    44804GB    14787GB      75%
+6 entries were displayed.
+ 
+Filer: pg-itdrncnas01 ...
+Aggregate                total       used      avail capacity
+aggr0_pg_itdrncnas01_01  744GB      301GB      443GB      41%
+n01_sata_1000_01      137062GB    76320GB    60742GB      56%
+n01_sata_2000_01      348692GB   150473GB   198219GB      43%
+3 entries were displayed.
+ 
+Filer: sj-itnas01a ...
+Aggregate                total       used      avail capacity
+sas64_450_01          140295GB   121407GB    18888GB      87%
+sata64_1000_01         67041GB    48077GB    18964GB      72%
+sas64_450_600_01       46186GB    37434GB     8752GB      81%
+sata01                 14153GB    10917GB     3235GB      77%
+sas64_600_NAS_TEST      2938GB     2016GB      922GB      69%
+sas32_450_root           734GB      433GB      301GB      59%
+Filer: sj-itnas01b ...
+Aggregate                total       used      avail capacity
+sata06                 13408GB     8963GB     4444GB      67%
+sata12                 14153GB    11351GB     2801GB      80%
+sata09                 11918GB     9319GB     2598GB      78%
+sata07                 10428GB     9277GB     1150GB      89%
+sata08                  7449GB     2825GB     4624GB      38%
+sata64_1000_01         26816GB    17994GB     8822GB      67%
+sas64_450_600_01      105221GB    91426GB    13795GB      87%
+sas32_450_root           367GB      333GB       34GB      91%
+sata64_1000_03         26816GB    18814GB     8002GB      70%
+sata01                 10428GB     9077GB     1350GB      87%
+sata02                 10428GB     5865GB     4562GB      56%
+Filer: sj-swnas01a ...
+Aggregate                total       used      avail capacity
+sata01_64              26071GB    22639GB     3432GB      87%
+sas01_64               41194GB    35923GB     5271GB      87%
+Filer: sj-swnas01b ...
+Aggregate                total       used      avail capacity
+sas01_64                8859GB     5958GB     2900GB      67%
+Filer: nl-swnas01a ...
+Aggregate                total       used      avail capacity
+sata01                 13408GB     7614GB     5793GB      57%
+sas01                   9843GB     8278GB     1565GB      84%
+Filer: nl-swnas01b ...
+Aggregate                total       used      avail capacity
+sas01                   9843GB     7289GB     2553GB      74%
+Filer: uk-itnas01 ...
+Aggregate                total       used      avail capacity
+sata01_64              26816GB    16998GB     9818GB      63%
+sas01_64               29530GB    25421GB     4109GB      86%
+Filer: uk-itnas02 ...
+Aggregate                total       used      avail capacity
+sas01_64               29530GB    23386GB     6144GB      79%
+sata01_64              26816GB    26218GB      598GB      98%
+Filer: pg-itnas03a ...
+Aggregate                total       used      avail capacity
+fc_aggr0               22041GB    18050GB     3990GB      82%
+sas01_64               56574GB    46589GB     9984GB      82%
+fc_aggr1                9551GB     2745GB     6806GB      29%
+sata01_64             107266GB    66283GB    40982GB      62%
+sata_aggr3              4469GB      415GB     4054GB       9%
+sata_aggr1             14153GB     7281GB     6871GB      51%
+sata_aggr2             10428GB     5525GB     4902GB      53%
+sata02_64              13408GB     3001GB    10406GB      22%
+Filer: pg-itnas03b ...
+Aggregate                total       used      avail capacity
+sas01_64              112780GB    51288GB    61492GB      45%
+sas_aggr1               6612GB     4119GB     2493GB      62%
+fc_aggr1               14694GB     5856GB     8837GB      40%
+fc_aggr0               14327GB     6175GB     8151GB      43%
+sata_aggr0             14153GB     5584GB     8568GB      39%
+sata_aggr1             14153GB     5923GB     8229GB      42%
+Filer: pg-swnas01a ...
+Aggregate                total       used      avail capacity
+sas_450_01              6612GB      836GB     5776GB      13%
+Filer: pg-swnas01b ...
+Aggregate                total       used      avail capacity
+sata01_64              40224GB    35301GB     4923GB      88%
+sas01_64               29021GB    18454GB    10567GB      64%
+Filer: jp-itnas01 ...
+Aggregate                total       used      avail capacity
+aggr1                  26816GB    23779GB     3037GB      89%
+aggr0                    744GB      710GB       34GB      95%
+Filer: hk-itnas01 ...
+Aggregate                total       used      avail capacity
+sata01_64              26816GB    17181GB     9634GB      64%
+Filer: to-swnas01a ...
+Aggregate                total       used      avail capacity
+sas01                  29389GB    25238GB     4150GB      86%
+sata01                 89388GB    76168GB    13219GB      85%
+Filer: to-swnas01b ...
+Aggregate                total       used      avail capacity
+sata01                 26816GB    22738GB     4077GB      85%
+sas01                  81112GB    68627GB    12484GB      85%
+Filer: sj-drnas02 ...
+Aggregate                total       used      avail capacity
+sata64_2000_03        107289GB    78596GB    28693GB      73%
+sata64_2000_04        101329GB    81038GB    20290GB      80%
+sata64_2000_02        134112GB   114691GB    19421GB      86%
+sata64_2000_01        134112GB   115569GB    18543GB      86%
+Filer: at-itengnnas01 ...
+Aggregate                total       used      avail capacity
+sata64_1000_root        5959GB     3326GB     2632GB      56%
+Filer: pg-drnas02 ...
+Aggregate                total       used      avail capacity
+sata64_bk13            80467GB    45776GB    34690GB      57%
+sata64_bk14            80467GB    48247GB    32219GB      60%
+sata64_bk15            53644GB    23206GB    30438GB      43%
+sata64_bk11            76725GB    41502GB    35222GB      54%
+aggr0                   4469GB      675GB     3793GB      15%
+sata64_1000_1          13408GB     9793GB     3614GB      73%
+sata64_bk12            46184GB    36396GB     9787GB      79%
+Filer: hs-itennas01a ...
+root@hs-itennas01a's password:
+Aggregate                total       used      avail capacity
+sata64_2000_01         10430GB     8914GB     1516GB      85%
+Filer: hs-itennas01b ...
+root@hs-itennas01b's password:
+Aggregate                total       used      avail capacity
+sata64_2000_01          7450GB     5615GB     1834GB      75%
+Filer: dk-itennas02a ...
+root@dk-itennas02a's password:
+Aggregate                total       used      avail capacity
+sas64_600_01            3937GB     3087GB      850GB      78%
+Filer: dk-itennas02b ...
+root@dk-itennas02b's password:
+Aggregate                total       used      avail capacity
+sata64_2000_01         13411GB     7283GB     6127GB      54%
+sas64_600_01            3937GB     3133GB      803GB      80%
+Filer: sj-engnas03a ...
+Aggregate                total       used      avail capacity
+sas01_64               15257GB    13722GB     1534GB      90%
+Filer: sj-engnas03b ...
+Aggregate                total       used      avail capacity
+sas01_64               15257GB    13765GB     1492GB      90%
