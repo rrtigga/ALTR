@@ -14,22 +14,22 @@ total=[]
 used=[]
 avail=[]
 capacity=[]
+temp =[]
+filers_row =[]
 
 
 input_file = open("output.txt", "r")
-#output = open("output.txt", "w")
 for i, line in enumerate(input_file):
 	if i==0:
 		output.write(line)
 	if("Filer:" in line):
-		temp =[]
 		temp = line.split()
 		filers.append(temp[1])
 		#print "\n"
 		#use list comprehension to get 2nd string in filers list
-	if ("Aggregate" in line):
-		continue
-	elif("GB" in line):
+	if not(("Aggregate" in line) or ("Filer:" in line)):
+		filers_row.append(temp[1])
+	if("GB" in line):
 		data =[]
 		data = line.split()
 		aggregate.append(data[0])
@@ -44,6 +44,7 @@ print total,"\n"
 print used,"\n"
 print avail,"\n"
 print capacity,"\n"
+print filers_row,"\n"
 
 
 
