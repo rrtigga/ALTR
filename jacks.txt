@@ -1,4 +1,4 @@
-
+Filer: sj-itcrncnas01 ...
 Aggregate                total       used      avail capacity
 aggr0_sj_itcrncnas01_01  367GB      251GB      115GB      68%
 aggr0_sj_itcrncnas01_02  367GB      251GB      115GB      68%
