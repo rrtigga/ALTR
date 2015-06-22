@@ -17,6 +17,7 @@ avail=[]
 capacity=[]
 temp =[]
 filers_row =[]
+sites =[]
 
 
 input_file = open("output.txt", "r")
@@ -42,6 +43,12 @@ for i, line in enumerate(input_file):
 		used.append(data[2])
 		avail.append(data[3])
 		capacity.append(data[4])
+
+#iterate through filers_row and put site in separate list
+for i in range(len(filers_row)):
+	sites.append(filers_row[i][:2])
+
+
 #print results
 print filers,"\n"
 print aggregate,"\n"
@@ -50,14 +57,15 @@ print used,"\n"
 print avail,"\n"
 print capacity,"\n"
 print filers_row,"\n"
+print sites, "\n"
 
-print len(filers),"\n"
-print len(aggregate),"\n"
-print len(total),"\n"
-print len(used),"\n"
-print len(avail),"\n"
-print len(capacity),"\n"
-print len(filers_row),"\n"
+# print len(filers),"\n"
+# print len(aggregate),"\n"
+# print len(total),"\n"
+# print len(used),"\n"
+# print len(avail),"\n"
+# print len(capacity),"\n"
+# print len(filers_row),"\n"
 
 
 
