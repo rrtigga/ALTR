@@ -48,6 +48,19 @@ for i, line in enumerate(input_file):
 for i in range(len(filers_row)):
 	sites.append(filers_row[i][:2])
 
+dept_temp =[]
+dept_temp = filers_row
+#work off filers_rows to strip out first 3 characters
+dept_temp = [i[3:] for i in dept_temp]
+
+#strip out all numbers in string
+dept=[]
+for i in range(len(dept_temp)):
+	dept.append(dept_temp[i][:5])
+#got dept list 
+
+
+
 
 #print results
 print filers,"\n"
@@ -58,6 +71,8 @@ print avail,"\n"
 print capacity,"\n"
 print filers_row,"\n"
 print sites, "\n"
+print dept, "\n"
+
 
 # print len(filers),"\n"
 # print len(aggregate),"\n"
