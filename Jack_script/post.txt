@@ -23,6 +23,8 @@ sites =[]
 dept=[]
 T1=[]
 T3=[]
+T3B=[]
+T4=[]
 
 input_file = open("output.txt", "r")
 for i, line in enumerate(input_file):
@@ -65,23 +67,39 @@ for i in range(len(dept_temp)):
 
 
 for i in range(len(aggregate)):
-	if("sata" in aggregate[i]):
+	if(("4000" in aggregate[i]) or ("arch" in aggregate[i])):
+		T4.append(used[i])
+		T1.append("0")
+		T3B.append("0")
+		T3.append("0")
+	elif("drn" in filers_row[i]):
+		T3B.append(used[i])
+		T1.append("0")
+		T4.append("0")
+		T3.append("0")
+	elif("sata" in aggregate[i]):
 		T1.append("0")
 		T3.append(used[i])
+		T4.append("0")
+		T3B.append("0")
 	elif("sas" in aggregate[i]):
 		T1.append(used[i])
 		T3.append("0")
+		T4.append("0")
+		T3B.append("0")
 	else:
 		T1.append(used[i])
 		T3.append("0")
+		T4.append("0")
+		T3B.append("0")
 
 
-x = PrettyTable(["Site", "Dept", "filer", "T1", "T3", "aggr", "total", "used", "avail", "Pct"])
+x = PrettyTable(["Site", "Dept", "filer", "T1", "T3","T3B","T4", "aggr", "total", "used", "avail"])
 x.align["Site"] = "l"
 x.padding_width = 1 # One space between column edges and contents (default)
 
 for i in range(len(filers_row)):
-	x.add_row([sites[i], dept[i],filers_row[i], T1[i], T3[i], aggregate[i], total[i], used[i], avail[i], capacity[i]])
+	x.add_row([sites[i], dept[i],filers_row[i], T1[i], T3[i],T3B[i], T4[i],aggregate[i], total[i], used[i], avail[i]])
 print x
 
 

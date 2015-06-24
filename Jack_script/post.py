@@ -11,6 +11,7 @@ for i, line in enumerate(input_file):
         if not (line.startswith('status') or ("entries" in line) or("password" in line)):
             output.write(line)
 
+#column lists
 filers = []
 aggregate=[]
 total=[]
@@ -23,6 +24,8 @@ sites =[]
 dept=[]
 T1=[]
 T3=[]
+T3B=[]
+T4=[]
 
 input_file = open("output.txt", "r")
 for i, line in enumerate(input_file):
@@ -65,27 +68,106 @@ for i in range(len(dept_temp)):
 
 
 for i in range(len(aggregate)):
-	if("sata" in aggregate[i]):
+	if(("4000" in aggregate[i]) or ("arch" in aggregate[i])):
+		T4.append(used[i])
+		T1.append("0")
+		T3B.append("0")
+		T3.append("0")
+	elif("drn" in filers_row[i]):
+		T3B.append(used[i])
+		T1.append("0")
+		T4.append("0")
+		T3.append("0")
+	elif("sata" in aggregate[i]):
 		T1.append("0")
 		T3.append(used[i])
+		T4.append("0")
+		T3B.append("0")
 	elif("sas" in aggregate[i]):
 		T1.append(used[i])
 		T3.append("0")
+		T4.append("0")
+		T3B.append("0")
 	else:
 		T1.append(used[i])
 		T3.append("0")
+		T4.append("0")
+		T3B.append("0")
 
-
-x = PrettyTable(["Site", "Dept", "filer", "T1", "T3", "aggr", "total", "used", "avail", "Pct"])
+#using python library to generate formatted table 
+x = PrettyTable(["Site", "Dept", "filer", "T1", "T3","T3B","T4", "aggr", "total", "used", "avail"])
 x.align["Site"] = "l"
 x.padding_width = 1 # One space between column edges and contents (default)
 
 for i in range(len(filers_row)):
-	x.add_row([sites[i], dept[i],filers_row[i], T1[i], T3[i], aggregate[i], total[i], used[i], avail[i], capacity[i]])
+	x.add_row([sites[i], dept[i],filers_row[i], T1[i], T3[i],T3B[i], T4[i],aggregate[i], total[i], used[i], avail[i]])
 print x
 
 
+#2nd part isilon
+s_data=[]
+s_used =[]
+s_size=[]
+s_name=[]
 
+s_T3B=[]
+s_T1=[]
+s_T3=[]
+
+
+
+#reading in isilon file
+input_file = open("stext.txt", "r")
+
+for i, line in enumerate(input_file):
+	if not (line.startswith('=') or ("Throughput" in line) or("Health" in line) or ("--" in line)):
+            s_data = line.split()
+            if (len(s_data)> 8):
+            	s_used.append(s_data[6])
+            	s_size.append(s_data[7])
+            	s_name.append(s_data[0])
+
+
+#strip out final character of string
+for i in range(len(s_used)):
+	s_used[i] = s_used[i][:-1]
+	s_size[i] = s_size[i][:-1]
+
+s_used_type=[]
+s_size_type=[]
+
+#store last character type in separate type lists
+for i in range(len(s_used)):
+	#store last character in list
+	s_used_type.append(s_used[i][-1:])
+	s_size_type.append(s_size[i][-1:])
+	#strip out last character
+	s_used[i] = s_used[i][:-1]
+	s_size[i] = s_size[i][:-1]
+	#multiply by .75
+	s_used[i] = int(s_used[i]) * .75
+	s_size[i] = int(s_size[i]) * .75
+	#concatenate 
+	s_used[i] = str(s_used[i]) + s_used_type[i]
+	s_size[i] = str(s_size[i]) + s_size_type[i]
+
+for i in range(len(s_name)):
+	if("s200" in s_name[i]):
+		s_T1.append(s_used[i])
+		s_T3.append("0")
+		s_T3B.append("0")
+	elif("n400" in s_name[i]):
+		s_T3B.append(s_used[i])
+		s_T1.append("0")
+		s_T3.append("0")
+	elif("x400" in s_name[i]):
+		s_T3.append(s_used[i])
+		s_T3B.append("0")
+		s_T1.append("0")
+
+print s_T1
+print s_T3
+print s_T3B
 
 
 
