@@ -11,6 +11,7 @@ for i, line in enumerate(input_file):
         if not (line.startswith('status') or ("entries" in line) or("password" in line)):
             output.write(line)
 
+#column lists
 filers = []
 aggregate=[]
 total=[]
@@ -93,6 +94,9 @@ for i in range(len(aggregate)):
 		T4.append("0")
 		T3B.append("0")
 
+#using python library to generate formatted table 
+print "\n"
+print "NetApp table"
 
 x = PrettyTable(["Site", "Dept", "filer", "T1", "T3","T3B","T4", "aggr", "total", "used", "avail"])
 x.align["Site"] = "l"
@@ -103,7 +107,78 @@ for i in range(len(filers_row)):
 print x
 
 
+#2nd part isilon
+s_data=[]
+s_used =[]
+s_size=[]
+s_name=[]
 
+s_T3B=[]
+s_T1=[]
+s_T3=[]
+
+
+
+#reading in isilon file
+input_file = open("stext.txt", "r")
+
+for i, line in enumerate(input_file):
+	if not (line.startswith('=') or ("Throughput" in line) or("Health" in line) or ("--" in line)):
+            s_data = line.split()
+            if (len(s_data)> 8):
+            	s_used.append(s_data[6])
+            	s_size.append(s_data[7])
+            	s_name.append(s_data[0])
+
+
+#strip out final character of string
+for i in range(len(s_used)):
+	s_used[i] = s_used[i][:-1]
+	s_size[i] = s_size[i][:-1]
+
+s_used_type=[]
+s_size_type=[]
+
+#store last character type in separate type lists
+for i in range(len(s_used)):
+	#store last character in list
+	s_used_type.append(s_used[i][-1:])
+	s_size_type.append(s_size[i][-1:])
+	#strip out last character
+	s_used[i] = s_used[i][:-1]
+	s_size[i] = s_size[i][:-1]
+	#multiply by .75
+	s_used[i] = int(s_used[i]) * .75
+	s_size[i] = int(s_size[i]) * .75
+	#concatenate 
+	s_used[i] = str(s_used[i]) + s_used_type[i]
+	s_size[i] = str(s_size[i]) + s_size_type[i]
+
+for i in range(len(s_name)):
+	if("s200" in s_name[i]):
+		s_T1.append(s_used[i])
+		s_T3.append("0")
+		s_T3B.append("0")
+	elif("n400" in s_name[i]):
+		s_T3B.append(s_used[i])
+		s_T1.append("0")
+		s_T3.append("0")
+	elif("x400" in s_name[i]):
+		s_T3.append(s_used[i])
+		s_T3B.append("0")
+		s_T1.append("0")
+
+#print out isilon data
+print "\n"
+
+print "Isilon Table \n"
+y = PrettyTable(["Name", "T1", "T3", "T3B", "Used", "Size"])
+y.align["Site"] = "l"
+y.padding_width = 1 # One space between column edges and contents (default)
+
+for i in range(5):
+	y.add_row([s_name[i], s_T1[i], s_T3[i], s_T3B[i], s_used[i], s_size[i]])
+print y
 
 
 
