@@ -10,13 +10,15 @@ from random import randint
 
 #stripping out system lines
 
-input_file = open("jacks.txt", "r")
+input_file = open("jack2.txt", "r")
 output = open("output.txt", "w")
 for i, line in enumerate(input_file):
     if i == 0:
         output.write(line)
     else:
-        if not (line.startswith('status') or ("entries" in line) or("password" in line)):
+    	tempish=[]
+    	tempish = line.split()
+        if not (line.startswith('status') or ("entries" in line) or("password" in line) or ("Health" in line) or ("Throughput" in line) or ("-----" in line)or ("========" in line) ):
             output.write(line)
 
 #column lists
@@ -128,7 +130,7 @@ s_T3=[]
 
 
 #reading in isilon file
-input_file = open("stext.txt", "r")
+input_file = open("output.txt", "r")
 
 for i, line in enumerate(input_file):
 	if not (line.startswith('=') or ("Throughput" in line) or("Health" in line) or ("--" in line)):
@@ -137,6 +139,7 @@ for i, line in enumerate(input_file):
             	s_used.append(s_data[6])
             	s_size.append(s_data[7])
             	s_name.append(s_data[0])
+            	print s_name
 
 
 #strip out final character of string
@@ -176,12 +179,6 @@ for i in range(len(s_name)):
 		s_T3B.append("0")
 		s_T1.append("0")
 
-
-#write isilon data to file 
-text_file = open("isilon_final.txt", "w")
-for i in range(len(s_name)):
-	text_file.write(str(s_name[i]+"    "+ str(s_T1[i])+"    "+ str(s_T3[i])+"    "+ str(s_T3B[i])+"    "+ str(s_used[i])+"    "+ str(s_size[i])+ "\n"))
-
 #print out isilon data
 print "\n"
 
@@ -190,14 +187,15 @@ y = PrettyTable(["Name", "T1", "T3", "T3B", "Used", "Size"])
 y.align["Site"] = "l"
 y.padding_width = 1 # One space between column edges and contents (default)
 
-for i in range(5):
-	y.add_row([s_name[i], s_T1[i], s_T3[i], s_T3B[i], s_used[i], s_size[i]])
-print y
+#for i in range(5):
+	#y.add_row([s_name[i], s_T1[i], s_T3[i], s_T3B[i], s_used[i], s_size[i]])
+#print y
 
 
 date=[]
 for i in range(len(T1)):
 	date.append("6/22")
+print date
 
 T_1_NOGB=[]
 T_3_NOGB=[]
@@ -252,7 +250,7 @@ T_4 = Scatter(
     y=T_4NO_NOGB
 )
 
-data = Data([T_1, T_3,T_3B,T_4])
+#data = Data([T_1, T_3,T_3B,T_4])
 
 #unique_url = py.plot(data, filename = 'Graph: T1, T3, T3B, T4')
 
