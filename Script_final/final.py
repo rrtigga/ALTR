@@ -30,6 +30,13 @@ for i, line in enumerate(input_file):
 		if("Filer:" in line):
 			isilon_filer_temp=line_store[1]
 		if( ("-ssd_" in line) or ("-ram" in line)):
+			isilon_site.append("sj")
+			isilon_dept.append("ice")
+			isilon_filer.append(isilon_filer_temp)
+			isilon_aggr.append("NULL")
+			isilon_total.append(line_store[4])
+			isilon_used.append(line_store[3])
+
 			if("s200" in line):
 				isilon_T1.append(line_store[3])
 				isilon_T3.append("0")
