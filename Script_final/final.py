@@ -1,3 +1,7 @@
+import datetime
+
+now = datetime.datetime.now()
+
 #read input of file
 input_file = open("jackfinal.txt", "r")
 line_store=[]
@@ -15,27 +19,29 @@ isilon_aggr=[]
 isilon_total=[]
 isilon_used=[]
 isilon_avail=[]
+isilon_date=[]
 isilon_check= False 
 isilon_filer_temp=""
 
 edit_is_used=""
 edit_is_total=""
 
-#netapp_C lists
-netapp_C_site=[]
-netapp_C_dept=[]
-netapp_C_filer=[]
-netapp_C_T1=[]
-netapp_C_T3=[]
-netapp_C_T3B=[]
-netapp_C_T4=[]
-netapp_C_aggr=[]
-netapp_C_total=[]
-netapp_C_used=[]
-netapp_C_avail=[]
-netapp_C_capacity=[]
-netapp_C_check= False 
-netapp_C_filer_temp=""
+#netapp lists
+netapp_site=[]
+netapp_dept=[]
+netapp_filer=[]
+netapp_T1=[]
+netapp_T3=[]
+netapp_T3B=[]
+netapp_T4=[]
+netapp_aggr=[]
+netapp_total=[]
+netapp_used=[]
+netapp_avail=[]
+netapp_date=[]
+netapp_capacity=[]
+netapp_check= False 
+netapp_filer_temp=""
 
 edit_net_used=""
 edit_net_total=""
@@ -57,6 +63,7 @@ for i, line in enumerate(input_file):
 			isilon_filer.append(isilon_filer_temp)
 			isilon_aggr.append("NULL")
 			isilon_site.append(isilon_filer_temp[:2])
+			isilon_date.append(unicode(now.replace(microsecond=0)))
 			
 			total_store =(float(line_store[4][:-1]) *.75)
 			used_store =(float(line_store[3][:-1]) *.75)
@@ -102,108 +109,124 @@ for i, line in enumerate(input_file):
 				isilon_T1.append("0")
 				isilon_T4.append("0")
 
-
-		#netapp here 		
-
+	#netapp here 		
 	if(len(line_store)>=1):
 		if(( "NETAPP" in line_store[0])):
 			isilon_check=False
-			netapp_C_check=True
+			netapp_check=True
 
-	if(netapp_C_check):
-
+	if(netapp_check):
 		if("Filer:" in line):
-			netapp_C_filer_temp=line_store[1]
+			netapp_filer_temp=line_store[1]
 		if not ("Filer" in line) or ("Aggregate" in line) or("entries" in line) or("status" in line) or("Permission" in line) or ("NETAPP" in line) or("GLOBAL" in line):
 			if("GB" in line) and ("%" in line):
-				netapp_C_filer.append(netapp_C_filer_temp)
-				netapp_C_aggr.append(line_store[0])
-				netapp_C_total.append(line_store[1])
-				netapp_C_used.append(line_store[2])
-				netapp_C_avail.append(line_store[3])
-				netapp_C_capacity.append(line_store[4])
-				netapp_C_site.append(netapp_C_filer_temp[:2])
-				netapp_C_dept.append(netapp_C_filer_temp[3:])
+				netapp_filer.append(netapp_filer_temp)
+				netapp_aggr.append(line_store[0])
+				netapp_total.append(line_store[1])
+				netapp_used.append(line_store[2])
+				netapp_avail.append(line_store[3])
+				netapp_capacity.append(line_store[4])
+				netapp_site.append(netapp_filer_temp[:2])
+				netapp_dept.append(netapp_filer_temp[3:])
+				netapp_date.append(unicode(now.replace(microsecond=0)))
 
 				if(("4000" in line) or ("arch" in line)):
-					netapp_C_T4.append(line_store[2])
-					netapp_C_T1.append("0")
-					netapp_C_T3B.append("0")
-					netapp_C_T3.append("0")
+					netapp_T4.append(line_store[2])
+					netapp_T1.append("0")
+					netapp_T3B.append("0")
+					netapp_T3.append("0")
 				elif("drn" in line):
-					netapp_C_T3B.append(line_store[2])
-					netapp_C_T1.append("0")
-					netapp_C_T4.append("0")
-					netapp_C_T3.append("0")
+					netapp_T3B.append(line_store[2])
+					netapp_T1.append("0")
+					netapp_T4.append("0")
+					netapp_T3.append("0")
 				elif("sata" in line):
-					netapp_C_T1.append("0")
-					netapp_C_T3.append(line_store[2])
-					netapp_C_T4.append("0")
-					netapp_C_T3B.append("0")
+					netapp_T1.append("0")
+					netapp_T3.append(line_store[2])
+					netapp_T4.append("0")
+					netapp_T3B.append("0")
 				elif("sas" in line):
-					netapp_C_T1.append(line_store[2])
-					netapp_C_T3.append("0")
-					netapp_C_T4.append("0")
-					netapp_C_T3B.append("0")
+					netapp_T1.append(line_store[2])
+					netapp_T3.append("0")
+					netapp_T4.append("0")
+					netapp_T3B.append("0")
 				else:
-					netapp_C_T1.append(line_store[2])
-					netapp_C_T3.append("0")
-					netapp_C_T4.append("0")
-					netapp_C_T3B.append("0")
+					netapp_T1.append(line_store[2])
+					netapp_T3.append("0")
+					netapp_T4.append("0")
+					netapp_T3B.append("0")
 
 
 
-print netapp_C_site, "\n"
-print netapp_C_dept, "\n"
-print netapp_C_filer, "\n"
-print netapp_C_T1, "\n"
-print netapp_C_T3, "\n"
-print netapp_C_T3B, "\n"
-print netapp_C_T4, "\n"
-print netapp_C_aggr, "\n"
-print netapp_C_total, "\n"
-print netapp_C_used, "\n"
-print netapp_C_avail, "\n"
+# print netapp_site, "\n"
+# print netapp_dept, "\n"
+# print netapp_filer, "\n"
+# print netapp_T1, "\n"
+# print netapp_T3, "\n"
+# print netapp_T3B, "\n"
+# print netapp_T4, "\n"
+# print netapp_aggr, "\n"
+# print netapp_total, "\n"
+# print netapp_used, "\n"
+# print netapp_avail, "\n"
 
 
-print isilon_site, "\n"
-print isilon_dept, "\n"
-print isilon_filer, "\n"
-print isilon_T1, "\n"
-print isilon_T3, "\n"
-print isilon_T3B, "\n"
-print isilon_T4, "\n"
-print isilon_aggr, "\n"
-print isilon_total, "\n"
-print isilon_used, "\n"
-print isilon_avail, "\n"
+# print isilon_site, "\n"
+# print isilon_dept, "\n"
+# print isilon_filer, "\n"
+# print isilon_T1, "\n"
+# print isilon_T3, "\n"
+# print isilon_T3B, "\n"
+# print isilon_T4, "\n"
+# print isilon_aggr, "\n"
+# print isilon_total, "\n"
+# print isilon_used, "\n"
+# print isilon_avail, "\n"
 
 
-print len(netapp_C_site), "\n"
-print len(netapp_C_dept), "\n"
-print len(netapp_C_filer), "\n"
-print len(netapp_C_T1), "\n"
-print len(netapp_C_T3), "\n"
-print len(netapp_C_T3B), "\n"
-print len(netapp_C_T4), "\n"
-print len(netapp_C_aggr), "\n"
-print len(netapp_C_total), "\n"
-print len(netapp_C_used), "\n"
-print len(netapp_C_avail), "\n"
+# print len(netapp_site), "\n"
+# print len(netapp_dept), "\n"
+# print len(netapp_filer), "\n"
+# print len(netapp_T1), "\n"
+# print len(netapp_T3), "\n"
+# print len(netapp_T3B), "\n"
+# print len(netapp_T4), "\n"
+# print len(netapp_aggr), "\n"
+# print len(netapp_total), "\n"
+# print len(netapp_used), "\n"
+# print len(netapp_avail), "\n"
 
 
-print len(isilon_site), "\n"
-print len(isilon_dept), "\n"
-print len(isilon_filer), "\n"
-print len(isilon_T1), "\n"
-print len(isilon_T3), "\n"
-print len(isilon_T3B), "\n"
-print len(isilon_T4), "\n"
-print len(isilon_aggr), "\n"
-print len(isilon_total), "\n"
-print len(isilon_used), "\n"
-print len(isilon_avail), "\n"
+# print len(isilon_site), "\n"
+# print len(isilon_dept), "\n"
+# print len(isilon_filer), "\n"
+# print len(isilon_T1), "\n"
+# print len(isilon_T3), "\n"
+# print len(isilon_T3B), "\n"
+# print len(isilon_T4), "\n"
+# print len(isilon_aggr), "\n"
+# print len(isilon_total), "\n"
+# print len(isilon_used), "\n"
+# print len(isilon_avail), "\n"
 
-			
+
+
+output = open("output_file.txt", "w")
+output.write( "NETAPP Table: \n")
+output.write(" Date            Site   Dept   filer  T1   T3   T3B   T4  aggr  total  used avail\n")
+output.write("\n")
+for i in range(len(netapp_aggr)):
+	output.write(str(netapp_date[i])+"," +str(netapp_site[i])+ ","+ str(netapp_dept[i])+ ","+ str(netapp_filer[i])+ ","+str(netapp_T1[i])+ ","+str(netapp_T3[i])+","+ str(netapp_T3B[i])+ ","+str(netapp_T4[i])+","+ str(netapp_aggr[i])+ ","+str(netapp_total[i])+ ","+str(netapp_used[i])+","+ str(netapp_avail[i])+"\n")
+
+output.write("\n")
+output.write("\n")
+output.write( "ISILON START Table: \n")
+output.write(" Date            Site   Dept   filer  T1   T3   T3B   T4  aggr  total  used avail\n")
+
+output.write("\n")
+
+for i in range(len(isilon_site)):
+	output.write(str(isilon_date[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i])+"\n")
+
 
 
