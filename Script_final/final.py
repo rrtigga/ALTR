@@ -33,7 +33,7 @@ netapp_C_aggr=[]
 netapp_C_total=[]
 netapp_C_used=[]
 netapp_C_avail=[]
-netapp_c_capacity=[]
+netapp_C_capacity=[]
 netapp_C_check= False 
 netapp_C_filer_temp=""
 
@@ -52,12 +52,14 @@ for i, line in enumerate(input_file):
 		if("Filer:" in line):
 			isilon_filer_temp=line_store[1]
 		if( ("-ssd_" in line) or ("-ram" in line)):
-			isilon_site.append("sj")
+			#isilon_site.append("sj")
 			isilon_dept.append("ice")
 			isilon_filer.append(isilon_filer_temp)
 			isilon_aggr.append("NULL")
-			isilon_total.append(line_store[4][:-1])
-			isilon_used.append(line_store[3][:-1])
+			isilon_site.append(isilon_filer_temp[:2])
+			
+			total_store =(float(line_store[4][:-1]) *.75)
+			used_store =(float(line_store[3][:-1]) *.75)
 
 			last_total = line_store[4][-1:]
 			last_used = line_store[3][-1:]
@@ -72,10 +74,12 @@ for i, line in enumerate(input_file):
 
 			if("T" in last_total):
 				isilon_avail.append(str(avil)+'T')
+				isilon_total.append(str(total_store)+'T')
+				isilon_used.append(str(used_store) +'T')
 			else:
 				isilon_avail.append(str(avil)+'G')
-
-
+				isilon_total.append(str(total_store)+'G')
+				isilon_used.append(str(used_store) +'G')
 
 			if("s200" in line):
 				isilon_T1.append(line_store[3])
@@ -98,23 +102,108 @@ for i, line in enumerate(input_file):
 				isilon_T1.append("0")
 				isilon_T4.append("0")
 
-		if(len(line_store)>=1):
-			if(( "netapp_C" in line_store[0]) and ("C-MODE" in line_store[1]) and("START" in line_store[2])):
-				isilon_check=False
-				netapp_C_check=True
 
-		if(netapp_C_check):
-			if("Filer:" in line):
-				netapp_C_filer_temp=line_store[1]
-			if not ("Filer" in line) or ("Aggregate" in line) or("entries" in line) or("status" in line) or("Permission" in line) or ("NETAPP" in line) or("GLOBAL" in line):
-				if("GB" in line):
-					netapp_C_aggr.append(line_store[0])
-					netapp_C_total.append(line_store[1])
-					netapp_C_used.append(line_store[2])
-					netapp_C_avail.append(line_store[3])
-					netapp_c_capacity.append(line_store[4])
+		#netapp here 		
+
+	if(len(line_store)>=1):
+		if(( "NETAPP" in line_store[0])):
+			isilon_check=False
+			netapp_C_check=True
+
+	if(netapp_C_check):
+
+		if("Filer:" in line):
+			netapp_C_filer_temp=line_store[1]
+		if not ("Filer" in line) or ("Aggregate" in line) or("entries" in line) or("status" in line) or("Permission" in line) or ("NETAPP" in line) or("GLOBAL" in line):
+			if("GB" in line) and ("%" in line):
+				netapp_C_filer.append(netapp_C_filer_temp)
+				netapp_C_aggr.append(line_store[0])
+				netapp_C_total.append(line_store[1])
+				netapp_C_used.append(line_store[2])
+				netapp_C_avail.append(line_store[3])
+				netapp_C_capacity.append(line_store[4])
+				netapp_C_site.append(netapp_C_filer_temp[:2])
+				netapp_C_dept.append(netapp_C_filer_temp[3:])
+
+				if(("4000" in line) or ("arch" in line)):
+					netapp_C_T4.append(line_store[2])
+					netapp_C_T1.append("0")
+					netapp_C_T3B.append("0")
+					netapp_C_T3.append("0")
+				elif("drn" in line):
+					netapp_C_T3B.append(line_store[2])
+					netapp_C_T1.append("0")
+					netapp_C_T4.append("0")
+					netapp_C_T3.append("0")
+				elif("sata" in line):
+					netapp_C_T1.append("0")
+					netapp_C_T3.append(line_store[2])
+					netapp_C_T4.append("0")
+					netapp_C_T3B.append("0")
+				elif("sas" in line):
+					netapp_C_T1.append(line_store[2])
+					netapp_C_T3.append("0")
+					netapp_C_T4.append("0")
+					netapp_C_T3B.append("0")
+				else:
+					netapp_C_T1.append(line_store[2])
+					netapp_C_T3.append("0")
+					netapp_C_T4.append("0")
+					netapp_C_T3B.append("0")
 
 
 
+print netapp_C_site, "\n"
+print netapp_C_dept, "\n"
+print netapp_C_filer, "\n"
+print netapp_C_T1, "\n"
+print netapp_C_T3, "\n"
+print netapp_C_T3B, "\n"
+print netapp_C_T4, "\n"
+print netapp_C_aggr, "\n"
+print netapp_C_total, "\n"
+print netapp_C_used, "\n"
+print netapp_C_avail, "\n"
+
+
+print isilon_site, "\n"
+print isilon_dept, "\n"
+print isilon_filer, "\n"
+print isilon_T1, "\n"
+print isilon_T3, "\n"
+print isilon_T3B, "\n"
+print isilon_T4, "\n"
+print isilon_aggr, "\n"
+print isilon_total, "\n"
+print isilon_used, "\n"
+print isilon_avail, "\n"
+
+
+print len(netapp_C_site), "\n"
+print len(netapp_C_dept), "\n"
+print len(netapp_C_filer), "\n"
+print len(netapp_C_T1), "\n"
+print len(netapp_C_T3), "\n"
+print len(netapp_C_T3B), "\n"
+print len(netapp_C_T4), "\n"
+print len(netapp_C_aggr), "\n"
+print len(netapp_C_total), "\n"
+print len(netapp_C_used), "\n"
+print len(netapp_C_avail), "\n"
+
+
+print len(isilon_site), "\n"
+print len(isilon_dept), "\n"
+print len(isilon_filer), "\n"
+print len(isilon_T1), "\n"
+print len(isilon_T3), "\n"
+print len(isilon_T3B), "\n"
+print len(isilon_T4), "\n"
+print len(isilon_aggr), "\n"
+print len(isilon_total), "\n"
+print len(isilon_used), "\n"
+print len(isilon_avail), "\n"
+
+			
 
 
