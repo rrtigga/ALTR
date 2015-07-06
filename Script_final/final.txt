@@ -219,7 +219,7 @@ for i, line in enumerate(input_file):
 
 
 
-output = open("output_file2.txt", "w")
+output = open("output_file.txt", "w")
 output.write("#Date,Time,Vendor,Site,Dept,filer,T1,T3,T3B,T4,aggr,total,used,avail \n")
 output.write("\n")
 for i in range(len(netapp_aggr)):
