@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 #date time library
 import datetime
 from time import strftime
@@ -76,10 +79,28 @@ def main():
 		print(str(isilon_date[i])+","+isilon_time[i]+","+str(isilon_vendors[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i]))
 
 
+	#total storage t1 t3 t3b t4 
+	#isilon plus netapp
+	total_storage=[]
+	used_storage=[]
+	totallen= len(isilon_dept)+len(netapp_dept)
+	for i in range(totallen):
+		total_storage.append(float(netapp_total[i])+float(isilon_total[i]))
+		print total_storage
+		used_storage.append(float(netapp_used[i])+float(netapp_total[i]))
+
+	x = range(100)
+	y = range(100,200)
+	fig = plt.figure()
+	ax1 = fig.add_subplot(111)
+
+	ax1.scatter(used_storage, total_storage, s=10, c='b', marker="s", label='first')
+	ax1.scatter(x[40:],y[40:], s=10, c='r', marker="o", label='second')
+	plt.legend(loc='upper left');
+	plt.show()
+
 
 #end main
-
-
 #isilon function
 def calculate_isilon():
    	#using boolean to check isilon part of input file
