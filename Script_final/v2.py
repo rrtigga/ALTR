@@ -79,25 +79,48 @@ def main():
 		print(str(isilon_date[i])+","+isilon_time[i]+","+str(isilon_vendors[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i]))
 
 
-	#total storage t1 t3 t3b t4 
+	#total storage T1 T3 T3B T4 
 	#isilon plus netapp
-	total_storage=[]
-	used_storage=[]
-	totallen= len(isilon_dept)+len(netapp_dept)
-	for i in range(totallen):
-		total_storage.append(float(netapp_total[i])+float(isilon_total[i]))
-		print total_storage
-		used_storage.append(float(netapp_used[i])+float(netapp_total[i]))
+	total_storage=0
+	used_storage=0
+	for i in range(len(netapp_dept)):
+		total_storage+=float(netapp_total[i])
+		used_storage+=float(netapp_used[i])
+	for i in range(len(isilon_dept)):
+		total_storage+=float(isilon_total[i])
+		used_storage+=float(isilon_used[i])
+
+	print total_storage
+	print used_storage
+
+	total_storageList=[]
+	used_storageList =[]
+	total_storageList.append(total_storage)
+	used_storageList.append(used_storage)
+
+	mockup=[]
+	mockup.append(1)
+
+	for i in range(10):
+		total_storage+=total_storage*1.05
+		total_storageList.append(total_storage)
+		used_storage+=used_storage*1.05
+		used_storageList.append(used_storage)
+		mockup.append(i+1)		
 
 	x = range(100)
 	y = range(100,200)
 	fig = plt.figure()
 	ax1 = fig.add_subplot(111)
 
-	ax1.scatter(used_storage, total_storage, s=10, c='b', marker="s", label='first')
-	ax1.scatter(x[40:],y[40:], s=10, c='r', marker="o", label='second')
+	ax1.scatter(mockup, used_storageList, s=10, c='b', marker="s", label='Used')
+	ax1.scatter(mockup,total_storageList, s=10, c='r', marker="o", label='Total')
 	plt.legend(loc='upper left');
 	plt.show()
+
+
+
+
 
 
 #end main
@@ -107,10 +130,9 @@ def calculate_isilon():
 	isilon_check= False 
 	#get user input
 	#read input of file
-	filename = raw_input('Enter a file name to calculate isilon: ')
 	try:
 		#open input file
-		input_file = open(filename, "r")
+		input_file = open("jackfinal.txt", "r")
 	except:
 		#if file can't be read, exit
 		print "Could not read file:", filename
@@ -271,11 +293,10 @@ def calculate_isilon():
 def calculate_netapp():
 	#netapp here
 	#file name of input file entered by user
-	filename = raw_input('Enter a file name to calculate netapp (if same as isilon enter same name): ')
 
 	#open file name from user
 	try:
-		input_file = open(filename, "r")
+		input_file = open("jackfinal.txt", "r")
 
 	#throw exception if file cannot be read then exit
 	except:
