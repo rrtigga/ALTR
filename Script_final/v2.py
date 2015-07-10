@@ -1,3 +1,5 @@
+#here are the graph mathplotlib
+#in order to install you need to run this command: sudo pip install matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -79,10 +81,16 @@ def main():
 		print(str(isilon_date[i])+","+isilon_time[i]+","+str(isilon_vendors[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i]))
 
 
+
+
+
+
 	#total storage T1 T3 T3B T4 
 	#isilon plus netapp
 	total_storage=0
 	used_storage=0
+
+
 	for i in range(len(netapp_dept)):
 		total_storage+=float(netapp_total[i])
 		used_storage+=float(netapp_used[i])
@@ -101,21 +109,41 @@ def main():
 	mockup=[]
 	mockup.append(1)
 
-	for i in range(10):
-		total_storage+=total_storage*1.05
-		total_storageList.append(total_storage)
+	for i in range(20):
+		if(i==7 or i==14):
+			total_storage+= total_storage*1.5
+			total_storageList.append(total_storage)
+		else:
+			total_storageList.append(total_storage)
+
+
 		used_storage+=used_storage*1.05
 		used_storageList.append(used_storage)
-		mockup.append(i+1)		
+		mockup.append(i+1)	
 
-	x = range(100)
-	y = range(100,200)
+	#convert to raw storage
+
+
+
+
+
+
 	fig = plt.figure()
+	fig2= plt.figure()
+	
 	ax1 = fig.add_subplot(111)
-
+	ax2= fig2.add_subplot(111)
+	
+	#full storage mockup
 	ax1.scatter(mockup, used_storageList, s=10, c='b', marker="s", label='Used')
 	ax1.scatter(mockup,total_storageList, s=10, c='r', marker="o", label='Total')
-	plt.legend(loc='upper left');
+
+	ax2.scatter(mockup, used_storageList, s=10, c='b', marker="s", label='free')
+	ax2.scatter(mockup,total_storageList, s=10, c='r', marker="o", label='free')
+	
+	ax1.legend(loc='upper left');
+	ax2.legend(loc='upper left');
+
 	plt.show()
 
 
