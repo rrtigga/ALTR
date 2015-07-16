@@ -2,7 +2,7 @@
 #in order to install you need to run this command: sudo pip install matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
-
+import webbrowser
 #date time library
 import datetime
 from time import strftime
@@ -241,13 +241,17 @@ d3.tsv("data.tsv", function(error, data) {
 
 </script>
 
-
-
-
 """
 
 	f.write(message)
 	f.close()
+
+	new = 2 # open in a new tab, if possible
+
+
+	# open an HTML file on my own (Windows) computer
+	url = "output.html"
+	webbrowser.open(url,new=new)
 
 
 
