@@ -241,9 +241,6 @@ d3.tsv("data.tsv", function(error, data) {
 
 </script>
 
-
-
-
 """
 
 	f.write(message)
