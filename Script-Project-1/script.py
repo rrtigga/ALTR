@@ -98,6 +98,32 @@ def main():
 		total_storage+=float(isilon_total[i])
 		used_storage+=float(isilon_used[i])
 
+	#raw conversion
+	raw_all_used=0
+	raw_all_total=0
+	
+	netapp_T1_raw=[]
+	netapp_T3_raw=[]
+	netapp_T3B_raw=[]
+	netapp_T4_raw=[]
+
+	isilon_T1_raw=[]
+	isilon_T3_raw=[]
+	isilon_T3B_raw=[]
+	isilon_T4_raw=[]
+
+
+
+	for i in range(len(netapp_dept)):
+
+		netapp_T1_raw.append(float(netapp_T1[i]) /.65)
+		netapp_T3_raw.append(float(netapp_T3[i])/.55)
+		netapp_T3B_raw.append(float(netapp_T3B[i])/.55)
+		netapp_T4_raw.append(float(netapp_T4[i])/.55)
+
+
+
+
 	print total_storage
 	print used_storage
 
@@ -106,6 +132,7 @@ def main():
 	total_storageList.append(total_storage)
 	used_storageList.append(used_storage)
 
+	#some twenty mockup numbers
 	mockup=[]
 	mockup.append(1)
 
@@ -121,137 +148,10 @@ def main():
 		used_storageList.append(used_storage)
 		mockup.append(i+1)	
 
-	#convert to raw storage
 
-	f = open('output.html','w')
-
-	message = """
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-body {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.dot {
-  stroke: #000;
-}
-
-</style>
-<body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-<script>
-
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-var x = d3.scale.linear()
-    .range([0, width]);
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var color = d3.scale.category10();
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-d3.tsv("data.tsv", function(error, data) {
-  if (error) throw error;
-
-  data.forEach(function(d) {
-    d.sepalLength = +d.sepalLength;
-    d.sepalWidth = +d.sepalWidth;
-  });
-
-  x.domain(d3.extent(data, function(d) { return d.sepalWidth; })).nice();
-  y.domain(d3.extent(data, function(d) { return d.sepalLength; })).nice();
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("x", width)
-      .attr("y", -6)
-      .style("text-anchor", "end")
-      .text("Sepal Width (cm)");
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Sepal Length (cm)")
-
-  svg.selectAll(".dot")
-      .data(data)
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("r", 3.5)
-      .attr("cx", function(d) { return x(d.sepalWidth); })
-      .attr("cy", function(d) { return y(d.sepalLength); })
-      .style("fill", function(d) { return color(d.species); });
-
-  var legend = svg.selectAll(".legend")
-      .data(color.domain())
-    .enter().append("g")
-      .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-  legend.append("rect")
-      .attr("x", width - 18)
-      .attr("width", 18)
-      .attr("height", 18)
-      .style("fill", color);
-
-  legend.append("text")
-      .attr("x", width - 24)
-      .attr("y", 9)
-      .attr("dy", ".35em")
-      .style("text-anchor", "end")
-      .text(function(d) { return d; });
-
-});
-
-</script>
-
-"""
-
-	f.write(message)
-	f.close()
-
-	new = 2 # open in a new tab, if possible
-
-
-	# open an HTML file on my own (Windows) computer
-	url = "output.html"
-	webbrowser.open(url,new=new)
+	mockup1=[]
+	for i in range(len(netapp_T3_raw)):
+		mockup1.append(i+1)
 
 
 
@@ -259,23 +159,33 @@ d3.tsv("data.tsv", function(error, data) {
 
 
 
-	# fig = plt.figure()
-	# fig2= plt.figure()
+
+
+
+
+
+	fig = plt.figure()
+	fig2= plt.figure()
 	
-	# ax1 = fig.add_subplot(111)
-	# ax2= fig2.add_subplot(111)
-	
-	# #full storage mockup
-	# ax1.scatter(mockup, used_storageList, s=10, c='b', marker="s", label='Used')
-	# ax1.scatter(mockup,total_storageList, s=10, c='r', marker="o", label='Total')
+	ax1 = fig.add_subplot(111)
+	ax2= fig2.add_subplot(111)
 
-	# ax2.scatter(mockup, used_storageList, s=10, c='b', marker="s", label='free')
-	# ax2.scatter(mockup,total_storageList, s=10, c='r', marker="o", label='free')
 	
-	# ax1.legend(loc='upper left');
-	# ax2.legend(loc='upper left');
+	#full storage mockup
+	ax1.scatter(mockup, used_storageList, s=10, c='b', marker="s", label='Used')
+	ax1.scatter(mockup,total_storageList, s=10, c='r', marker="o", label='Total')
 
-	# plt.show()
+
+
+	ax2.scatter(mockup1,netapp_T1_raw , s=10, c='b', marker="s", label='T1 Raw')
+	ax2.scatter(mockup1,netapp_T3_raw, s=10, c='r', marker="o", label='T3 Raw')
+	ax2.scatter(mockup1,netapp_T3B_raw, s=10, c='y', marker="o", label='T3B Raw')
+	ax2.scatter(mockup1,netapp_T4_raw, s=10, c='g', marker="o", label='T4 Raw')
+
+	ax1.legend(loc='upper left');
+	ax2.legend(loc='upper left');
+
+	plt.show()
 
 
 
