@@ -1,6 +1,6 @@
 #here are the graph mathplotlib
 #in order to install you need to run this command: sudo pip install matplotlib
-import numpy as np
+import numpy
 import matplotlib.pyplot as plt
 import webbrowser
 #date time library
@@ -80,11 +80,6 @@ def main():
 		#printing isilon table
 		print(str(isilon_date[i])+","+isilon_time[i]+","+str(isilon_vendors[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i]))
 
-
-
-
-
-
 	#total storage T1 T3 T3B T4 
 	#isilon plus netapp
 	total_storage=0
@@ -149,45 +144,510 @@ def main():
 		mockup.append(i+1)	
 
 
-	mockup1=[]
+	dept_site=[]
+	dept_site = netapp_site+isilon_site
+
+	#getting all the different sites 
+	diff_site = uniq(dept_site)
+
+	#print diff_site
+
+
+	#all lists needed for site by tier...it's a lot of lists :P
+	sj_T1_used=[]
+	sj_T3_used=[]
+	sj_T3B_used=[]
+	sj_T4_used=[]
+	sj_T1_total=[]
+	sj_T3_total=[]
+	sj_T3B_total=[]
+	sj_T4_total=[]
+
+	pg_T1_used=[]
+	pg_T3_used=[]
+	pg_T3B_used=[]
+	pg_T4_used=[]
+	pg_T1_total=[]
+	pg_T3_total=[]
+	pg_T3B_total=[]
+	pg_T4_total=[]
+
+	nl_T1_used=[]
+	nl_T3_used=[]
+	nl_T3B_used=[]
+	nl_T4_used=[]
+	nl_T1_total=[]
+	nl_T3_total=[]
+	nl_T3B_total=[]
+	nl_T4_total=[]
+
+
+	uk_T1_used=[]
+	uk_T3_used=[]
+	uk_T3B_used=[]
+	uk_T4_used=[]
+	uk_T1_total=[]
+	uk_T3_total=[]
+	uk_T3B_total=[]
+	uk_T4_total=[]
+
+	jp_T1_used=[]
+	jp_T3_used=[]
+	jp_T3B_used=[]
+	jp_T4_used=[]
+	jp_T1_total=[]
+	jp_T3_total=[]
+	jp_T3B_total=[]
+	jp_T4_total=[]
+
+	hk_T1_used=[]
+	hk_T3_used=[]
+	hk_T3B_used=[]
+	hk_T4_used=[]
+	hk_T1_total=[]
+	hk_T3_total=[]
+	hk_T3B_total=[]
+	hk_T4_total=[]
+
+	to_T1_used=[]
+	to_T3_used=[]
+	to_T3B_used=[]
+	to_T4_used=[]
+	to_T1_total=[]
+	to_T3_total=[]
+	to_T3B_total=[]
+	to_T4_total=[]
+
+	at_T1_used=[]
+	at_T3_used=[]
+	at_T3B_used=[]
+	at_T4_used=[]
+	at_T1_total=[]
+	at_T3_total=[]
+	at_T3B_total=[]
+	at_T4_total=[]
+
+	#iterate through netapp for site and tier
+	for i in range(len(netapp_site)):
+		if("sj" in netapp_site[i]):
+			sj_T1_used.append(netapp_T1[i])
+			sj_T1_total.append(netapp_total[i])
+			
+			sj_T3_used.append(netapp_T3[i])
+			sj_T3_total.append(netapp_total[i])
+			
+			sj_T3B_used.append(netapp_T3B[i])
+			sj_T3B_total.append(netapp_total[i])
+			
+			sj_T4_used.append(netapp_T4[i])
+			sj_T4_total.append(netapp_total[i])
+
+		elif("pg" in netapp_site[i]):
+			pg_T1_used.append(netapp_T1[i])
+			pg_T1_total.append(netapp_total[i])
+			
+			pg_T3_used.append(netapp_T3[i])
+			pg_T3_total.append(netapp_total[i])
+			
+			pg_T3B_used.append(netapp_T3B[i])
+			pg_T3B_total.append(netapp_total[i])
+			
+			pg_T4_used.append(netapp_T4[i])
+			pg_T4_total.append(netapp_total[i])
+
+		elif("nl" in netapp_site[i]):
+			nl_T1_used.append(netapp_T1[i])
+			nl_T1_total.append(netapp_total[i])
+			
+			nl_T3_used.append(netapp_T3[i])
+			nl_T3_total.append(netapp_total[i])
+			
+			nl_T3B_used.append(netapp_T3B[i])
+			nl_T3B_total.append(netapp_total[i])
+			
+			nl_T4_used.append(netapp_T4[i])
+			nl_T4_total.append(netapp_total[i])
+
+		elif("uk" in netapp_site[i]):
+			uk_T1_used.append(netapp_T1[i])
+			uk_T1_total.append(netapp_total[i])
+			
+			uk_T3_used.append(netapp_T3[i])
+			uk_T3_total.append(netapp_total[i])
+			
+			uk_T3B_used.append(netapp_T3B[i])
+			uk_T3B_total.append(netapp_total[i])
+			
+			uk_T4_used.append(netapp_T4[i])
+			uk_T4_total.append(netapp_total[i])
+
+		elif("jp" in netapp_site[i]):
+			jp_T1_used.append(netapp_T1[i])
+			jp_T1_total.append(netapp_total[i])
+			
+			jp_T3_used.append(netapp_T3[i])
+			jp_T3_total.append(netapp_total[i])
+			
+			jp_T3B_used.append(netapp_T3B[i])
+			jp_T3B_total.append(netapp_total[i])
+			
+			jp_T4_used.append(netapp_T4[i])
+			jp_T4_total.append(netapp_total[i])
+
+		elif("hk" in netapp_site[i]):
+			hk_T1_used.append(netapp_T1[i])
+			hk_T1_total.append(netapp_total[i])
+			
+			hk_T3_used.append(netapp_T3[i])
+			hk_T3_total.append(netapp_total[i])
+			
+			hk_T3B_used.append(netapp_T3B[i])
+			hk_T3B_total.append(netapp_total[i])
+			
+			hk_T4_used.append(netapp_T4[i])
+			hk_T4_total.append(netapp_total[i])
+
+		elif("to" in netapp_site[i]):
+			to_T1_used.append(netapp_T1[i])
+			to_T1_total.append(netapp_total[i])
+			
+			to_T3_used.append(netapp_T3[i])
+			to_T3_total.append(netapp_total[i])
+			
+			to_T3B_used.append(netapp_T3B[i])
+			to_T3B_total.append(netapp_total[i])
+			
+			to_T4_used.append(netapp_T4[i])
+			to_T4_total.append(netapp_total[i])
+
+		elif("at" in netapp_site[i]):
+			at_T1_used.append(netapp_T1[i])
+			at_T1_total.append(netapp_total[i])
+			
+			at_T3_used.append(netapp_T3[i])
+			at_T3_total.append(netapp_total[i])
+			
+			at_T3B_used.append(netapp_T3B[i])
+			at_T3B_total.append(netapp_total[i])
+			
+			at_T4_used.append(netapp_T4[i])
+			at_T4_total.append(netapp_total[i])
+
+		#iterate through isilon for site and tier
+	for i in range(len(isilon_site)):
+		if("sj" in isilon_site[i]):
+			sj_T1_used.append(isilon_T1[i])
+			sj_T1_total.append(isilon_total[i])
+			
+			sj_T3_used.append(isilon_T3[i])
+			sj_T3_total.append(isilon_total[i])
+			
+			sj_T3B_used.append(isilon_T3B[i])
+			sj_T3B_total.append(isilon_total[i])
+			
+			sj_T4_used.append(isilon_T4[i])
+			sj_T4_total.append(isilon_total[i])
+
+		elif("pg" in isilon_site[i]):
+			pg_T1_used.append(isilon_T1[i])
+			pg_T1_total.append(isilon_total[i])
+			
+			pg_T3_used.append(isilon_T3[i])
+			pg_T3_total.append(isilon_total[i])
+			
+			pg_T3B_used.append(isilon_T3B[i])
+			pg_T3B_total.append(isilon_total[i])
+			
+			pg_T4_used.append(isilon_T4[i])
+			pg_T4_total.append(isilon_total[i])
+
+		elif("nl" in isilon_site[i]):
+			nl_T1_used.append(isilon_T1[i])
+			nl_T1_total.append(isilon_total[i])
+			
+			nl_T3_used.append(isilon_T3[i])
+			nl_T3_total.append(isilon_total[i])
+			
+			nl_T3B_used.append(isilon_T3B[i])
+			nl_T3B_total.append(isilon_total[i])
+			
+			nl_T4_used.append(isilon_T4[i])
+			nl_T4_total.append(isilon_total[i])
+
+		elif("uk" in isilon_site[i]):
+			uk_T1_used.append(isilon_T1[i])
+			uk_T1_total.append(isilon_total[i])
+			
+			uk_T3_used.append(isilon_T3[i])
+			uk_T3_total.append(isilon_total[i])
+			
+			uk_T3B_used.append(isilon_T3B[i])
+			uk_T3B_total.append(isilon_total[i])
+			
+			uk_T4_used.append(isilon_T4[i])
+			uk_T4_total.append(isilon_total[i])
+
+		elif("jp" in isilon_site[i]):
+			jp_T1_used.append(isilon_T1[i])
+			jp_T1_total.append(isilon_total[i])
+			
+			jp_T3_used.append(isilon_T3[i])
+			jp_T3_total.append(isilon_total[i])
+			
+			jp_T3B_used.append(isilon_T3B[i])
+			jp_T3B_total.append(isilon_total[i])
+			
+			jp_T4_used.append(isilon_T4[i])
+			jp_T4_total.append(isilon_total[i])
+
+		elif("hk" in isilon_site[i]):
+			hk_T1_used.append(isilon_T1[i])
+			hk_T1_total.append(isilon_total[i])
+			
+			hk_T3_used.append(isilon_T3[i])
+			hk_T3_total.append(isilon_total[i])
+			
+			hk_T3B_used.append(isilon_T3B[i])
+			hk_T3B_total.append(isilon_total[i])
+			
+			hk_T4_used.append(isilon_T4[i])
+			hk_T4_total.append(isilon_total[i])
+
+		elif("to" in isilon_site[i]):
+			to_T1_used.append(isilon_T1[i])
+			to_T1_total.append(isilon_total[i])
+			
+			to_T3_used.append(isilon_T3[i])
+			to_T3_total.append(isilon_total[i])
+			
+			to_T3B_used.append(isilon_T3B[i])
+			to_T3B_total.append(isilon_total[i])
+			
+			to_T4_used.append(isilon_T4[i])
+			to_T4_total.append(isilon_total[i])
+
+		elif("at" in isilon_site[i]):
+			at_T1_used.append(isilon_T1[i])
+			at_T1_total.append(isilon_total[i])
+			
+			at_T3_used.append(isilon_T3[i])
+			at_T3_total.append(isilon_total[i])
+			
+			at_T3B_used.append(isilon_T3B[i])
+			at_T3B_total.append(isilon_total[i])
+			
+			at_T4_used.append(isilon_T4[i])
+			at_T4_total.append(isilon_total[i])
+
+	sj_length=[]
+	pg_length=[]
+	nl_length=[]
+	uk_length=[]
+	jp_length=[]
+	hk_length=[]
+	to_length=[]
+	at_length=[]
+
+	for i in range(len(sj_T1_used)):
+		sj_length.append(i+1)
+	for i in range(len(pg_T1_used)):
+		pg_length.append(i+1)
+	for i in range(len(nl_T1_used)):
+		nl_length.append(i+1)
+	for i in range(len(uk_T1_used)):
+		uk_length.append(i+1)
+	for i in range(len(jp_T1_used)):
+		jp_length.append(i+1)
+	for i in range(len(hk_T1_used)):
+		hk_length.append(i+1)
+	for i in range(len(to_T1_used)):
+		to_length.append(i+1)
+	for i in range(len(at_T1_used)):
+		at_length.append(i+1)
+
+
+	mockup2=[]
 	for i in range(len(netapp_T3_raw)):
-		mockup1.append(i+1)
+		mockup2.append(i+1)
 
 
 
-
-
-
-
-
-
-
-
-
+	#start plot figures
 	fig = plt.figure()
 	fig2= plt.figure()
+
+	#by site by tier
+	fig3= plt.figure()
+	fig4=plt.figure()
+	fig5=plt.figure()
+	fig6=plt.figure()
+	fig7=plt.figure()
+	fig8=plt.figure()
+	fig9=plt.figure()
+	fig10=plt.figure()
+
 	
 	ax1 = fig.add_subplot(111)
 	ax2= fig2.add_subplot(111)
 
+	#by site by tier
+	ax3=fig3.add_subplot(111)
+	ax4=fig4.add_subplot(111)
+	ax5=fig5.add_subplot(111)
+	ax6=fig6.add_subplot(111)
+	ax7=fig7.add_subplot(111)
+	ax8=fig8.add_subplot(111)
+	ax9=fig9.add_subplot(111)
+	ax10=fig10.add_subplot(111)
+
+
+
+
+	
 	
 	#full storage mockup
-	ax1.scatter(mockup, used_storageList, s=10, c='b', marker="s", label='Used')
-	ax1.scatter(mockup,total_storageList, s=10, c='r', marker="o", label='Total')
+	ax1.scatter(mockup, used_storageList, s=30, c='b', marker="s", label='Used')
+	ax1.scatter(mockup,total_storageList, s=30, c='r', marker="o", label='Total')
+
+	ax2.scatter(mockup2,netapp_T1_raw , s=30, c='b', marker="s", label='T1 Raw')
+	ax2.scatter(mockup2,netapp_T3_raw, s=30, c='r', marker="o", label='T3 Raw')
+	ax2.scatter(mockup2,netapp_T3B_raw, s=30, c='y', marker="o", label='T3B Raw')
+	ax2.scatter(mockup2,netapp_T4_raw, s=30, c='g', marker="o", label='T4 Raw')
+
+	#scatter plots for tier and site
+	#sj T1
+	ax3.scatter(sj_length,sj_T1_used, s=30, c='b', marker="s", label='SJ T1 Used')
+	ax3.scatter(sj_length,sj_T1_total, s=30, c='w', marker="s", label='SJ T1 Total')
+	#sj T3
+	ax3.scatter(sj_length,sj_T3_used , s=30, c='g', marker="s", label='SJ T3 Used')
+	ax3.scatter(sj_length,sj_T3_total, s=30, c='r', marker="s", label='SJ T3 Total')
+	#sj T3B
+	ax3.scatter(sj_length,sj_T3B_used , s=30, c='m', marker="s", label='SJ T3B Used')
+	ax3.scatter(sj_length,sj_T3B_total, s=30, c='c', marker="s", label='SJ T3B Total')
+	#sj T4
+	ax3.scatter(sj_length,sj_T4_used , s=30, c='y', marker="s", label='SJ T4 Used')
+	ax3.scatter(sj_length,sj_T4_total, s=30, c='k', marker="s", label='SJ T4 Total')
+
+	#pg T1
+	ax4.scatter(pg_length,pg_T1_used, s=30, c='b', marker="s", label='pg T1 Used')
+	ax4.scatter(pg_length,pg_T1_total, s=30, c='w', marker="s", label='pg T1 Total')
+	#pg T3
+	ax4.scatter(pg_length,pg_T3_used , s=30, c='g', marker="s", label='pg T3 Used')
+	ax4.scatter(pg_length,pg_T3_total, s=30, c='r', marker="s", label='pg T3 Total')
+	#pg T3B
+	ax4.scatter(pg_length,pg_T3B_used , s=30, c='m', marker="s", label='pg T3B Used')
+	ax4.scatter(pg_length,pg_T3B_total, s=30, c='c', marker="s", label='pg T3B Total')
+	#pg T4
+	ax4.scatter(pg_length,pg_T4_used , s=30, c='y', marker="s", label='pg T4 Used')
+	ax4.scatter(pg_length,pg_T4_total, s=30, c='k', marker="s", label='pg T4 Total')
+
+	#nl T1
+	ax5.scatter(nl_length,nl_T1_used, s=30, c='b', marker="s", label='nl T1 Used')
+	ax5.scatter(nl_length,nl_T1_total, s=30, c='w', marker="s", label='nl T1 Total')
+	#nl T3
+	ax5.scatter(nl_length,nl_T3_used , s=30, c='g', marker="s", label='nl T3 Used')
+	ax5.scatter(nl_length,nl_T3_total, s=30, c='r', marker="s", label='nl T3 Total')
+	#nl T3B
+	ax5.scatter(nl_length,nl_T3B_used , s=30, c='m', marker="s", label='nl T3B Used')
+	ax5.scatter(nl_length,nl_T3B_total, s=30, c='c', marker="s", label='nl T3B Total')
+	#nl T4
+	ax5.scatter(nl_length,nl_T4_used , s=30, c='y', marker="s", label='nl T4 Used')
+	ax5.scatter(nl_length,nl_T4_total, s=30, c='k', marker="s", label='nl T4 Total')
+
+	#uk T1
+	ax6.scatter(uk_length,uk_T1_used, s=30, c='b', marker="s", label='uk T1 Used')
+	ax6.scatter(uk_length,uk_T1_total, s=30, c='w', marker="s", label='uk T1 Total')
+	#uk T3
+	ax6.scatter(uk_length,uk_T3_used , s=30, c='g', marker="s", label='uk T3 Used')
+	ax6.scatter(uk_length,uk_T3_total, s=30, c='r', marker="s", label='uk T3 Total')
+	#uk T3B
+	ax6.scatter(uk_length,uk_T3B_used , s=30, c='m', marker="s", label='uk T3B Used')
+	ax6.scatter(uk_length,uk_T3B_total, s=30, c='c', marker="s", label='uk T3B Total')
+	#uk T4
+	ax6.scatter(uk_length,uk_T4_used , s=30, c='y', marker="s", label='uk T4 Used')
+	ax6.scatter(uk_length,uk_T4_total, s=30, c='k', marker="s", label='uk T4 Total')
+
+	#jp T1
+	ax7.scatter(jp_length,jp_T1_used, s=30, c='b', marker="s", label='jp T1 Used')
+	ax7.scatter(jp_length,jp_T1_total, s=30, c='w', marker="s", label='jp T1 Total')
+	#jp T3
+	ax7.scatter(jp_length,jp_T3_used , s=30, c='g', marker="s", label='jp T3 Used')
+	ax7.scatter(jp_length,jp_T3_total, s=30, c='r', marker="s", label='jp T3 Total')
+	#jp T3B
+	ax7.scatter(jp_length,jp_T3B_used , s=30, c='m', marker="s", label='jp T3B Used')
+	ax7.scatter(jp_length,jp_T3B_total, s=30, c='c', marker="s", label='jp T3B Total')
+	#jp T4
+	ax7.scatter(jp_length,jp_T4_used , s=30, c='y', marker="s", label='jp T4 Used')
+	ax7.scatter(jp_length,jp_T4_total, s=30, c='k', marker="s", label='jp T4 Total')
+
+
+	#hk T1
+	ax8.scatter(hk_length,hk_T1_used, s=30, c='b', marker="s", label='hk T1 Used')
+	ax8.scatter(hk_length,hk_T1_total, s=30, c='w', marker="s", label='hk T1 Total')
+	#hk T3
+	ax8.scatter(hk_length,hk_T3_used , s=30, c='g', marker="s", label='hk T3 Used')
+	ax8.scatter(hk_length,hk_T3_total, s=30, c='r', marker="s", label='hk T3 Total')
+	#hk T3B
+	ax8.scatter(hk_length,hk_T3B_used , s=30, c='m', marker="s", label='hk T3B Used')
+	ax8.scatter(hk_length,hk_T3B_total, s=30, c='c', marker="s", label='hk T3B Total')
+	#hk T4
+	ax8.scatter(hk_length,hk_T4_used , s=30, c='y', marker="s", label='hk T4 Used')
+	ax8.scatter(hk_length,hk_T4_total, s=30, c='k', marker="s", label='hk T4 Total')
+
+
+	#to T1
+	ax9.scatter(to_length,to_T1_used, s=30, c='b', marker="s", label='to T1 Used')
+	ax9.scatter(to_length,to_T1_total, s=30, c='w', marker="s", label='to T1 Total')
+	#to T3
+	ax9.scatter(to_length,to_T3_used , s=30, c='g', marker="s", label='to T3 Used')
+	ax9.scatter(to_length,to_T3_total, s=30, c='r', marker="s", label='to T3 Total')
+	#to T3B
+	ax9.scatter(to_length,to_T3B_used , s=30, c='m', marker="s", label='to T3B Used')
+	ax9.scatter(to_length,to_T3B_total, s=30, c='c', marker="s", label='to T3B Total')
+	#to T4
+	ax9.scatter(to_length,to_T4_used , s=30, c='y', marker="s", label='to T4 Used')
+	ax9.scatter(to_length,to_T4_total, s=30, c='k', marker="s", label='to T4 Total')
+
+
+	#at T1
+	ax10.scatter(at_length,at_T1_used, s=30, c='b', marker="s", label='at T1 Used')
+	ax10.scatter(at_length,at_T1_total, s=30, c='w', marker="s", label='at T1 Total')
+	#to T3
+	ax10.scatter(at_length,at_T3_used , s=30, c='g', marker="s", label='at T3 Used')
+	ax10.scatter(at_length,at_T3_total, s=30, c='r', marker="s", label='at T3 Total')
+	#to T3B
+	ax10.scatter(at_length,at_T3B_used , s=30, c='m', marker="s", label='at T3B Used')
+	ax10.scatter(at_length,at_T3B_total, s=30, c='c', marker="s", label='at T3B Total')
+	#to T4
+	ax10.scatter(at_length,at_T4_used , s=30, c='y', marker="s", label='at T4 Used')
+	ax10.scatter(at_length,at_T4_total, s=30, c='k', marker="s", label='at T4 Total')
 
 
 
-	ax2.scatter(mockup1,netapp_T1_raw , s=10, c='b', marker="s", label='T1 Raw')
-	ax2.scatter(mockup1,netapp_T3_raw, s=10, c='r', marker="o", label='T3 Raw')
-	ax2.scatter(mockup1,netapp_T3B_raw, s=10, c='y', marker="o", label='T3B Raw')
-	ax2.scatter(mockup1,netapp_T4_raw, s=10, c='g', marker="o", label='T4 Raw')
+	ax1.legend(loc='upper left')
+	ax2.legend(loc='upper left')
+	ax3.legend(loc='upper left')
+	ax4.legend(loc='upper left')
+	ax5.legend(loc='upper left')
+	ax6.legend(loc='upper left')
+	ax7.legend(loc='upper left')
+	ax8.legend(loc='upper left')
+	ax9.legend(loc='upper left')
+	ax10.legend(loc='upper left')
 
-	ax1.legend(loc='upper left');
-	ax2.legend(loc='upper left');
 
+
+
+	
 	plt.show()
 
 
+def uniq(input):
+  output = []
+  for x in input:
+    if x not in output:
+      output.append(x)
+  return output
 
 
 
