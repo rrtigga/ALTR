@@ -677,145 +677,145 @@ def main():
 	
 	
 	#full storage mockup
-	ax1.scatter(mockup, used_storageList, s=30, c='b', marker="s", label='Used')
-	ax1.scatter(mockup,total_storageList, s=30, c='r', marker="o", label='Total')
+	ax1.plot(mockup, used_storageList, c='b', label='Full Storage Used')
+	ax1.plot(mockup,total_storageList, c='r', label='Full Storage Total')
 
-	ax2.scatter(mockup2,netapp_T1_raw , s=30, c='b', marker="s", label='T1 Raw')
-	ax2.scatter(mockup2,netapp_T3_raw, s=30, c='r', marker="o", label='T3 Raw')
-	ax2.scatter(mockup2,netapp_T3B_raw, s=30, c='y', marker="o", label='T3B Raw')
-	ax2.scatter(mockup2,netapp_T4_raw, s=30, c='g', marker="o", label='T4 Raw')
+	ax2.plot(mockup2,netapp_T1_raw , c='b', label='T1 Raw')
+	ax2.plot(mockup2,netapp_T3_raw, c='r', label='T3 Raw')
+	ax2.plot(mockup2,netapp_T3B_raw, c='y', label='T3B Raw')
+	ax2.plot(mockup2,netapp_T4_raw, c='g', label='T4 Raw')
 
-	#scatter plots for tier and site
+	#plot plots for tier and site
 	#sj T1
-	ax3.scatter(sj_length,sj_T1_used, s=30, c='b', marker="s", label='SJ T1 Used')
-	ax3.scatter(sj_length,sj_T1_total, s=30, c='w', marker="s", label='SJ T1 Total')
+	ax3.plot(sj_length,sj_T1_used, c='b', label='SJ T1 Used')
+	ax3.plot(sj_length,sj_T1_total, c='w', label='SJ T1 Total')
 	#sj T3
-	ax3.scatter(sj_length,sj_T3_used , s=30, c='g', marker="s", label='SJ T3 Used')
-	ax3.scatter(sj_length,sj_T3_total, s=30, c='r', marker="s", label='SJ T3 Total')
+	ax3.plot(sj_length,sj_T3_used , c='g', label='SJ T3 Used')
+	ax3.plot(sj_length,sj_T3_total, c='r', label='SJ T3 Total')
 	#sj T3B
-	ax3.scatter(sj_length,sj_T3B_used , s=30, c='m', marker="s", label='SJ T3B Used')
-	ax3.scatter(sj_length,sj_T3B_total, s=30, c='c', marker="s", label='SJ T3B Total')
+	ax3.plot(sj_length,sj_T3B_used , c='m', label='SJ T3B Used')
+	ax3.plot(sj_length,sj_T3B_total, c='c', label='SJ T3B Total')
 	#sj T4
-	ax3.scatter(sj_length,sj_T4_used , s=30, c='y', marker="s", label='SJ T4 Used')
-	ax3.scatter(sj_length,sj_T4_total, s=30, c='k', marker="s", label='SJ T4 Total')
+	ax3.plot(sj_length,sj_T4_used , c='y', label='SJ T4 Used')
+	ax3.plot(sj_length,sj_T4_total, c='k', label='SJ T4 Total')
 
 	#pg T1
-	ax4.scatter(pg_length,pg_T1_used, s=30, c='b', marker="s", label='pg T1 Used')
-	ax4.scatter(pg_length,pg_T1_total, s=30, c='w', marker="s", label='pg T1 Total')
+	ax4.plot(pg_length,pg_T1_used, c='b', label='pg T1 Used')
+	ax4.plot(pg_length,pg_T1_total, c='w', label='pg T1 Total')
 	#pg T3
-	ax4.scatter(pg_length,pg_T3_used , s=30, c='g', marker="s", label='pg T3 Used')
-	ax4.scatter(pg_length,pg_T3_total, s=30, c='r', marker="s", label='pg T3 Total')
+	ax4.plot(pg_length,pg_T3_used , c='g', label='pg T3 Used')
+	ax4.plot(pg_length,pg_T3_total, c='r', label='pg T3 Total')
 	#pg T3B
-	ax4.scatter(pg_length,pg_T3B_used , s=30, c='m', marker="s", label='pg T3B Used')
-	ax4.scatter(pg_length,pg_T3B_total, s=30, c='c', marker="s", label='pg T3B Total')
+	ax4.plot(pg_length,pg_T3B_used , c='m', label='pg T3B Used')
+	ax4.plot(pg_length,pg_T3B_total, c='c', label='pg T3B Total')
 	#pg T4
-	ax4.scatter(pg_length,pg_T4_used , s=30, c='y', marker="s", label='pg T4 Used')
-	ax4.scatter(pg_length,pg_T4_total, s=30, c='k', marker="s", label='pg T4 Total')
+	ax4.plot(pg_length,pg_T4_used , c='y', label='pg T4 Used')
+	ax4.plot(pg_length,pg_T4_total, c='k', label='pg T4 Total')
 
 	#nl T1
-	ax5.scatter(nl_length,nl_T1_used, s=30, c='b', marker="s", label='nl T1 Used')
-	ax5.scatter(nl_length,nl_T1_total, s=30, c='w', marker="s", label='nl T1 Total')
+	ax5.plot(nl_length,nl_T1_used, c='b', label='nl T1 Used')
+	ax5.plot(nl_length,nl_T1_total, c='w', label='nl T1 Total')
 	#nl T3
-	ax5.scatter(nl_length,nl_T3_used , s=30, c='g', marker="s", label='nl T3 Used')
-	ax5.scatter(nl_length,nl_T3_total, s=30, c='r', marker="s", label='nl T3 Total')
+	ax5.plot(nl_length,nl_T3_used , c='g', label='nl T3 Used')
+	ax5.plot(nl_length,nl_T3_total, c='r', label='nl T3 Total')
 	#nl T3B
-	ax5.scatter(nl_length,nl_T3B_used , s=30, c='m', marker="s", label='nl T3B Used')
-	ax5.scatter(nl_length,nl_T3B_total, s=30, c='c', marker="s", label='nl T3B Total')
+	ax5.plot(nl_length,nl_T3B_used , c='m', label='nl T3B Used')
+	ax5.plot(nl_length,nl_T3B_total, c='c', label='nl T3B Total')
 	#nl T4
-	ax5.scatter(nl_length,nl_T4_used , s=30, c='y', marker="s", label='nl T4 Used')
-	ax5.scatter(nl_length,nl_T4_total, s=30, c='k', marker="s", label='nl T4 Total')
+	ax5.plot(nl_length,nl_T4_used , c='y', label='nl T4 Used')
+	ax5.plot(nl_length,nl_T4_total, c='k', label='nl T4 Total')
 
 	#uk T1
-	ax6.scatter(uk_length,uk_T1_used, s=30, c='b', marker="s", label='uk T1 Used')
-	ax6.scatter(uk_length,uk_T1_total, s=30, c='w', marker="s", label='uk T1 Total')
+	ax6.plot(uk_length,uk_T1_used, c='b', label='uk T1 Used')
+	ax6.plot(uk_length,uk_T1_total, c='w', label='uk T1 Total')
 	#uk T3
-	ax6.scatter(uk_length,uk_T3_used , s=30, c='g', marker="s", label='uk T3 Used')
-	ax6.scatter(uk_length,uk_T3_total, s=30, c='r', marker="s", label='uk T3 Total')
+	ax6.plot(uk_length,uk_T3_used , c='g', label='uk T3 Used')
+	ax6.plot(uk_length,uk_T3_total, c='r', label='uk T3 Total')
 	#uk T3B
-	ax6.scatter(uk_length,uk_T3B_used , s=30, c='m', marker="s", label='uk T3B Used')
-	ax6.scatter(uk_length,uk_T3B_total, s=30, c='c', marker="s", label='uk T3B Total')
+	ax6.plot(uk_length,uk_T3B_used , c='m', label='uk T3B Used')
+	ax6.plot(uk_length,uk_T3B_total, c='c', label='uk T3B Total')
 	#uk T4
-	ax6.scatter(uk_length,uk_T4_used , s=30, c='y', marker="s", label='uk T4 Used')
-	ax6.scatter(uk_length,uk_T4_total, s=30, c='k', marker="s", label='uk T4 Total')
+	ax6.plot(uk_length,uk_T4_used , c='y', label='uk T4 Used')
+	ax6.plot(uk_length,uk_T4_total, c='k', label='uk T4 Total')
 
 	#jp T1
-	ax7.scatter(jp_length,jp_T1_used, s=30, c='b', marker="s", label='jp T1 Used')
-	ax7.scatter(jp_length,jp_T1_total, s=30, c='w', marker="s", label='jp T1 Total')
+	ax7.plot(jp_length,jp_T1_used, c='b', label='jp T1 Used')
+	ax7.plot(jp_length,jp_T1_total, c='w', label='jp T1 Total')
 	#jp T3
-	ax7.scatter(jp_length,jp_T3_used , s=30, c='g', marker="s", label='jp T3 Used')
-	ax7.scatter(jp_length,jp_T3_total, s=30, c='r', marker="s", label='jp T3 Total')
+	ax7.plot(jp_length,jp_T3_used , c='g', label='jp T3 Used')
+	ax7.plot(jp_length,jp_T3_total, c='r', label='jp T3 Total')
 	#jp T3B
-	ax7.scatter(jp_length,jp_T3B_used , s=30, c='m', marker="s", label='jp T3B Used')
-	ax7.scatter(jp_length,jp_T3B_total, s=30, c='c', marker="s", label='jp T3B Total')
+	ax7.plot(jp_length,jp_T3B_used , c='m', label='jp T3B Used')
+	ax7.plot(jp_length,jp_T3B_total, c='c', label='jp T3B Total')
 	#jp T4
-	ax7.scatter(jp_length,jp_T4_used , s=30, c='y', marker="s", label='jp T4 Used')
-	ax7.scatter(jp_length,jp_T4_total, s=30, c='k', marker="s", label='jp T4 Total')
+	ax7.plot(jp_length,jp_T4_used , c='y', label='jp T4 Used')
+	ax7.plot(jp_length,jp_T4_total, c='k', label='jp T4 Total')
 
 
 	#hk T1
-	ax8.scatter(hk_length,hk_T1_used, s=30, c='b', marker="s", label='hk T1 Used')
-	ax8.scatter(hk_length,hk_T1_total, s=30, c='w', marker="s", label='hk T1 Total')
+	ax8.plot(hk_length,hk_T1_used, c='b', label='hk T1 Used')
+	ax8.plot(hk_length,hk_T1_total, c='w', label='hk T1 Total')
 	#hk T3
-	ax8.scatter(hk_length,hk_T3_used , s=30, c='g', marker="s", label='hk T3 Used')
-	ax8.scatter(hk_length,hk_T3_total, s=30, c='r', marker="s", label='hk T3 Total')
+	ax8.plot(hk_length,hk_T3_used , c='g', label='hk T3 Used')
+	ax8.plot(hk_length,hk_T3_total, c='r', label='hk T3 Total')
 	#hk T3B
-	ax8.scatter(hk_length,hk_T3B_used , s=30, c='m', marker="s", label='hk T3B Used')
-	ax8.scatter(hk_length,hk_T3B_total, s=30, c='c', marker="s", label='hk T3B Total')
+	ax8.plot(hk_length,hk_T3B_used , c='m', label='hk T3B Used')
+	ax8.plot(hk_length,hk_T3B_total, c='c', label='hk T3B Total')
 	#hk T4
-	ax8.scatter(hk_length,hk_T4_used , s=30, c='y', marker="s", label='hk T4 Used')
-	ax8.scatter(hk_length,hk_T4_total, s=30, c='k', marker="s", label='hk T4 Total')
+	ax8.plot(hk_length,hk_T4_used , c='y', label='hk T4 Used')
+	ax8.plot(hk_length,hk_T4_total, c='k', label='hk T4 Total')
 
 
 	#to T1
-	ax9.scatter(to_length,to_T1_used, s=30, c='b', marker="s", label='to T1 Used')
-	ax9.scatter(to_length,to_T1_total, s=30, c='w', marker="s", label='to T1 Total')
+	ax9.plot(to_length,to_T1_used, c='b', label='to T1 Used')
+	ax9.plot(to_length,to_T1_total, c='w', label='to T1 Total')
 	#to T3
-	ax9.scatter(to_length,to_T3_used , s=30, c='g', marker="s", label='to T3 Used')
-	ax9.scatter(to_length,to_T3_total, s=30, c='r', marker="s", label='to T3 Total')
+	ax9.plot(to_length,to_T3_used , c='g', label='to T3 Used')
+	ax9.plot(to_length,to_T3_total, c='r', label='to T3 Total')
 	#to T3B
-	ax9.scatter(to_length,to_T3B_used , s=30, c='m', marker="s", label='to T3B Used')
-	ax9.scatter(to_length,to_T3B_total, s=30, c='c', marker="s", label='to T3B Total')
+	ax9.plot(to_length,to_T3B_used , c='m', label='to T3B Used')
+	ax9.plot(to_length,to_T3B_total, c='c', label='to T3B Total')
 	#to T4
-	ax9.scatter(to_length,to_T4_used , s=30, c='y', marker="s", label='to T4 Used')
-	ax9.scatter(to_length,to_T4_total, s=30, c='k', marker="s", label='to T4 Total')
+	ax9.plot(to_length,to_T4_used , c='y', label='to T4 Used')
+	ax9.plot(to_length,to_T4_total, c='k', label='to T4 Total')
 
 	#at T1
-	ax10.scatter(at_length,at_T1_used, s=30, c='b', marker="s", label='at T1 Used')
-	ax10.scatter(at_length,at_T1_total, s=30, c='w', marker="s", label='at T1 Total')
+	ax10.plot(at_length,at_T1_used, c='b', label='at T1 Used')
+	ax10.plot(at_length,at_T1_total, c='w', label='at T1 Total')
 	#to T3
-	ax10.scatter(at_length,at_T3_used , s=30, c='g', marker="s", label='at T3 Used')
-	ax10.scatter(at_length,at_T3_total, s=30, c='r', marker="s", label='at T3 Total')
+	ax10.plot(at_length,at_T3_used , c='g', label='at T3 Used')
+	ax10.plot(at_length,at_T3_total, c='r', label='at T3 Total')
 	#to T3B
-	ax10.scatter(at_length,at_T3B_used , s=30, c='m', marker="s", label='at T3B Used')
-	ax10.scatter(at_length,at_T3B_total, s=30, c='c', marker="s", label='at T3B Total')
+	ax10.plot(at_length,at_T3B_used , c='m', label='at T3B Used')
+	ax10.plot(at_length,at_T3B_total, c='c', label='at T3B Total')
 	#to T4
-	ax10.scatter(at_length,at_T4_used , s=30, c='y', marker="s", label='at T4 Used')
-	ax10.scatter(at_length,at_T4_total, s=30, c='k', marker="s", label='at T4 Total')
+	ax10.plot(at_length,at_T4_used , c='y', label='at T4 Used')
+	ax10.plot(at_length,at_T4_total, c='k', label='at T4 Total')
 
 
 
 
-	#scatter plots for depts and tiers
-	
+	#plot plots for depts and tiers
+
 	#ice
-	ax11.scatter(ice_length,ice_T1_used , s=30, c='y', marker="s", label='Ice Used')
-	ax11.scatter(ice_length,ice_T1_total , s=30, c='k', marker="s", label='Ice Total')
+	ax11.plot(ice_length,ice_T1_used , c='y', marker="s", label='Ice Used')
+	ax11.plot(ice_length,ice_T1_total , c='k', marker="s", label='Ice Total')
 
 	#swip
-	ax12.scatter(swip_length,swip_T1_used , s=30, c='b', marker="s", label='SWIP Used')
-	ax12.scatter(swip_length,swip_T1_total , s=30, c='r', marker="s", label='SWIP Total')
+	ax12.plot(swip_length,swip_T1_used , c='b', marker="s", label='SWIP Used')
+	ax12.plot(swip_length,swip_T1_total , c='r', marker="s", label='SWIP Total')
 
 	#it
-	ax13.scatter(it_length,it_T1_used , s=30, c='m', marker="s", label='IT Used')
-	ax13.scatter(it_length,it_T1_total , s=30, c='c', marker="s", label='IT Total')
+	ax13.plot(it_length,it_T1_used , c='m', marker="s", label='IT Used')
+	ax13.plot(it_length,it_T1_total , c='c', marker="s", label='IT Total')
 
 	#wwoe
-	ax14.scatter(wwoe_length,wwoe_T1_used , s=30, c='g', marker="s", label='WWOE Used')
-	ax14.scatter(wwoe_length,wwoe_T1_total , s=30, c='w', marker="s", label='WWOE Total')
+	ax14.plot(wwoe_length,wwoe_T1_used , c='g', marker="s", label='WWOE Used')
+	ax14.plot(wwoe_length,wwoe_T1_total , c='w', marker="s", label='WWOE Total')
 
 
 
-
+	
 	ax1.legend(loc='upper left')
 	ax2.legend(loc='upper left')
 	ax3.legend(loc='upper left')
@@ -830,6 +830,8 @@ def main():
 	ax12.legend(loc='upper left')
 	ax13.legend(loc='upper left')
 	ax14.legend(loc='upper left')
+
+
 
 
 
