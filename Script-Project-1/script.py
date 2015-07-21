@@ -1,5 +1,7 @@
 #here are the graph mathplotlib
-#in order to install you need to run this command: sudo pip install matplotlib
+from scipy import interp, arange, exp
+
+
 import numpy
 import matplotlib.pyplot as plt
 import webbrowser
@@ -8,6 +10,8 @@ import datetime
 from time import strftime
 #get time now
 now = datetime.datetime.now()
+
+
 
 #store the lines of the input file for checking
 line_store=[]
@@ -792,9 +796,6 @@ def main():
 	ax10.plot(at_length,at_T4_used , c='y', label='at T4 Used')
 	ax10.plot(at_length,at_T4_total, c='k', label='at T4 Total')
 
-
-
-
 	#plot plots for depts and tiers
 
 	#ice
@@ -812,9 +813,6 @@ def main():
 	#wwoe
 	ax14.plot(wwoe_length,wwoe_T1_used , c='g', marker="s", label='WWOE Used')
 	ax14.plot(wwoe_length,wwoe_T1_total , c='w', marker="s", label='WWOE Total')
-
-
-
 	
 	ax1.legend(loc='upper left')
 	ax2.legend(loc='upper left')
@@ -831,13 +829,10 @@ def main():
 	ax13.legend(loc='upper left')
 	ax14.legend(loc='upper left')
 
-
-
-
-
-
 	
 	plt.show()
+
+
 
 
 def uniq(input):
