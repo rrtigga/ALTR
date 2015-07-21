@@ -147,10 +147,13 @@ def main():
 	dept_site=[]
 	dept_site = netapp_site+isilon_site
 
-	#getting all the different sites 
+	#getting all the different sites and dpts 
 	diff_site = uniq(dept_site)
 
-	#print diff_site
+	diff_dpt = uniq(netapp_dept+isilon_dept)
+
+
+	
 
 
 	#all lists needed for site by tier...it's a lot of lists :P
@@ -466,6 +469,161 @@ def main():
 		at_length.append(i+1)
 
 
+
+	#department and tiers lists
+	ice_T1_used=[]
+	ice_T3_used=[]
+	ice_T3B_used=[]
+	ice_T4_used=[]
+	ice_T1_total=[]
+	ice_T3_total=[]
+	ice_T3B_total=[]
+	ice_T4_total=[]
+
+	swip_T1_used=[]
+	swip_T3_used=[]
+	swip_T3B_used=[]
+	swip_T4_used=[]
+	swip_T1_total=[]
+	swip_T3_total=[]
+	swip_T3B_total=[]
+	swip_T4_total=[]
+
+	it_T1_used=[]
+	it_T3_used=[]
+	it_T3B_used=[]
+	it_T4_used=[]
+	it_T1_total=[]
+	it_T3_total=[]
+	it_T3B_total=[]
+	it_T4_total=[]
+
+	wwoe_T1_used=[]
+	wwoe_T3_used=[]
+	wwoe_T3B_used=[]
+	wwoe_T4_used=[]
+	wwoe_T1_total=[]
+	wwoe_T3_total=[]
+	wwoe_T3B_total=[]
+	wwoe_T4_total=[]
+
+
+
+
+	
+
+	#getting the appropriate tier values for department tiers 
+	for i in range(len(netapp_dept)):
+		if(("itnas01a" in netapp_dept[i]) or ("itnas01b" in netapp_dept[i])):
+			ice_T1_used.append(netapp_T1[i])
+			ice_T3_used.append(netapp_T3[i])
+			ice_T3B_used.append(netapp_T3B[i])
+			ice_T4_used.append(netapp_T4[i])
+
+			ice_T1_total.append(netapp_total[i])
+			ice_T3_total.append(netapp_total[i])
+			ice_T3B_total.append(netapp_total[i])
+			ice_T4_total.append(netapp_total[i])
+
+		elif(("swnas01a" in netapp_dept[i]) or ("swnas01b" in netapp_dept[i])):
+			swip_T1_used.append(netapp_T1[i])
+			swip_T3_used.append(netapp_T3[i])
+			swip_T3B_used.append(netapp_T3B[i])
+			swip_T4_used.append(netapp_T4[i])
+
+			swip_T1_total.append(netapp_total[i])
+			swip_T3_total.append(netapp_total[i])
+			swip_T3B_total.append(netapp_total[i])
+			swip_T4_total.append(netapp_total[i])
+
+		elif(("itcrncnas01" in netapp_dept[i])):
+			it_T1_used.append(netapp_T1[i])
+			it_T3_used.append(netapp_T3[i])
+			it_T3B_used.append(netapp_T3B[i])
+			it_T4_used.append(netapp_T4[i])
+
+			it_T1_total.append(netapp_total[i])
+			it_T3_total.append(netapp_total[i])
+			it_T3B_total.append(netapp_total[i])
+			it_T4_total.append(netapp_total[i])
+
+		elif(("engnas03a" in netapp_dept[i]) or ("engnas03b" in netapp_dept[i])):
+			wwoe_T1_used.append(netapp_T1[i])
+			wwoe_T3_used.append(netapp_T3[i])
+			wwoe_T3B_used.append(netapp_T3B[i])
+			wwoe_T4_used.append(netapp_T4[i])
+
+			wwoe_T1_total.append(netapp_total[i])
+			wwoe_T3_total.append(netapp_total[i])
+			wwoe_T3B_total.append(netapp_total[i])
+			wwoe_T4_total.append(netapp_total[i])
+
+
+	for i in range(len(isilon_dept)):
+		if(("itnas01a" in isilon_dept[i]) or ("itnas01b" in isilon_dept[i])):
+			ice_T1_used.append(isilon_T1[i])
+			ice_T3_used.append(isilon_T3[i])
+			ice_T3B_used.append(isilon_T3B[i])
+			ice_T4_used.append(isilon_T4[i])
+
+			ice_T1_total.append(isilon_total[i])
+			ice_T3_total.append(isilon_total[i])
+			ice_T3B_total.append(isilon_total[i])
+			ice_T4_total.append(isilon_total[i])
+
+		elif(("swnas01a" in isilon_dept[i]) or ("swnas01b" in isilon_dept[i])):
+			swip_T1_used.append(isilon_T1[i])
+			swip_T3_used.append(isilon_T3[i])
+			swip_T3B_used.append(isilon_T3B[i])
+			swip_T4_used.append(isilon_T4[i])
+
+			swip_T1_total.append(isilon_total[i])
+			swip_T3_total.append(isilon_total[i])
+			swip_T3B_total.append(isilon_total[i])
+			swip_T4_total.append(isilon_total[i])
+
+		elif(("itcrncnas01" in isilon_dept[i])):
+			it_T1_used.append(isilon_T1[i])
+			it_T3_used.append(isilon_T3[i])
+			it_T3B_used.append(isilon_T3B[i])
+			it_T4_used.append(isilon_T4[i])
+
+			it_T1_total.append(isilon_total[i])
+			it_T3_total.append(isilon_total[i])
+			it_T3B_total.append(isilon_total[i])
+			it_T4_total.append(isilon_total[i])
+
+		elif(("engnas03a" in isilon_dept[i]) or ("engnas03b" in isilon_dept[i])):
+			wwoe_T1_used.append(isilon_T1[i])
+			wwoe_T3_used.append(isilon_T3[i])
+			wwoe_T3B_used.append(isilon_T3B[i])
+			wwoe_T4_used.append(isilon_T4[i])
+
+			wwoe_T1_total.append(isilon_total[i])
+			wwoe_T3_total.append(isilon_total[i])
+			wwoe_T3B_total.append(isilon_total[i])
+			wwoe_T4_total.append(isilon_total[i])
+
+
+
+		#length for the departments
+
+		ice_length=[]
+		swip_length=[]
+		it_length=[]
+		wwoe_length=[]
+
+
+		for i in range(len(ice_T1_total)):
+			ice_length.append(i+1)
+		for i in range(len(swip_T1_total)):
+			swip_length.append(i+1)
+		for i in range(len(it_T1_total)):
+			it_length.append(i+1)
+		for i in range(len(wwoe_T1_total)):
+			wwoe_length.append(i+1)
+
+
 	mockup2=[]
 	for i in range(len(netapp_T3_raw)):
 		mockup2.append(i+1)
@@ -486,7 +644,13 @@ def main():
 	fig9=plt.figure()
 	fig10=plt.figure()
 
-	
+
+	#by dept by tier
+	fig11=plt.figure()
+	fig12=plt.figure()
+	fig13=plt.figure()
+	fig14=plt.figure()
+
 	ax1 = fig.add_subplot(111)
 	ax2= fig2.add_subplot(111)
 
@@ -499,6 +663,13 @@ def main():
 	ax8=fig8.add_subplot(111)
 	ax9=fig9.add_subplot(111)
 	ax10=fig10.add_subplot(111)
+
+
+	#by dept by tier
+	ax11=fig11.add_subplot(111)
+	ax12=fig12.add_subplot(111)
+	ax13=fig13.add_subplot(111)
+	ax14=fig14.add_subplot(111)
 
 
 
@@ -608,7 +779,6 @@ def main():
 	ax9.scatter(to_length,to_T4_used , s=30, c='y', marker="s", label='to T4 Used')
 	ax9.scatter(to_length,to_T4_total, s=30, c='k', marker="s", label='to T4 Total')
 
-
 	#at T1
 	ax10.scatter(at_length,at_T1_used, s=30, c='b', marker="s", label='at T1 Used')
 	ax10.scatter(at_length,at_T1_total, s=30, c='w', marker="s", label='at T1 Total')
@@ -624,6 +794,28 @@ def main():
 
 
 
+
+	#scatter plots for depts and tiers
+	
+	#ice
+	ax11.scatter(ice_length,ice_T1_used , s=30, c='y', marker="s", label='Ice Used')
+	ax11.scatter(ice_length,ice_T1_total , s=30, c='k', marker="s", label='Ice Total')
+
+	#swip
+	ax12.scatter(swip_length,swip_T1_used , s=30, c='b', marker="s", label='SWIP Used')
+	ax12.scatter(swip_length,swip_T1_total , s=30, c='r', marker="s", label='SWIP Total')
+
+	#it
+	ax13.scatter(it_length,it_T1_used , s=30, c='m', marker="s", label='IT Used')
+	ax13.scatter(it_length,it_T1_total , s=30, c='c', marker="s", label='IT Total')
+
+	#wwoe
+	ax14.scatter(wwoe_length,wwoe_T1_used , s=30, c='g', marker="s", label='WWOE Used')
+	ax14.scatter(wwoe_length,wwoe_T1_total , s=30, c='w', marker="s", label='WWOE Total')
+
+
+
+
 	ax1.legend(loc='upper left')
 	ax2.legend(loc='upper left')
 	ax3.legend(loc='upper left')
@@ -634,6 +826,10 @@ def main():
 	ax8.legend(loc='upper left')
 	ax9.legend(loc='upper left')
 	ax10.legend(loc='upper left')
+	ax11.legend(loc='upper left')
+	ax12.legend(loc='upper left')
+	ax13.legend(loc='upper left')
+	ax14.legend(loc='upper left')
 
 
 
