@@ -157,9 +157,6 @@ def main():
 	diff_dpt = uniq(netapp_dept+isilon_dept)
 
 
-	
-
-
 	#all lists needed for site by tier...it's a lot of lists :P
 	sj_T1_used=[]
 	sj_T3_used=[]
@@ -512,10 +509,6 @@ def main():
 	wwoe_T4_total=[]
 
 
-
-
-	
-
 	#getting the appropriate tier values for department tiers 
 	for i in range(len(netapp_dept)):
 		if(("itnas01a" in netapp_dept[i]) or ("itnas01b" in netapp_dept[i])):
@@ -676,10 +669,6 @@ def main():
 	ax14=fig14.add_subplot(111)
 
 
-
-
-	
-	
 	#full storage mockup
 	ax1.plot(mockup, used_storageList, c='b', label='Full Storage Used')
 	ax1.plot(mockup,total_storageList, c='r', label='Full Storage Total')
