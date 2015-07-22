@@ -65,7 +65,7 @@ def main():
 	#calling netapp function
 	calculate_netapp();
 	#opening output for total usage
-	output = open("total_usage.txt", "a")
+	output = open("/storage/data/GLOBAL/usage_collection/total_usage.txt", "a")
 	output.write("#Date,Time,Vendor,Site,Dept,filer,T1_GB,T3_GB,T3B_GB,T4_GB,aggr,total,used,avail \n")
 	output.write("\n")
 
@@ -635,7 +635,8 @@ def main():
 
 
 	#create department site file to append total usage
-	output = open("dept_site_usage.txt", "a")
+	output = open("/storage/data/GLOBAL/usage_collection/dept_site_usage.txt", "a")
+
 	output.write("Departments\n")
 	output.write("SJ\n")
 	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
@@ -937,7 +938,7 @@ def calculate_isilon():
 	#read input of file
 	try:
 		#open input file
-		input_file = open("jackfinal.txt", "r")
+		input_file = open("/storage/data/GLOBAL/storage_data.txt", "r")
 	except:
 		#if file can't be read, exit
 		print "Could not read file:", filename
@@ -1101,7 +1102,7 @@ def calculate_netapp():
 
 	#open file name from user
 	try:
-		input_file = open("jackfinal.txt", "r")
+		input_file = open("/storage/data/GLOBAL/storage_data.txt", "r")
 
 	#throw exception if file cannot be read then exit
 	except:
