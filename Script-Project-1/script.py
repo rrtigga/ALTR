@@ -64,8 +64,8 @@ def main():
 	calculate_isilon();
 	#calling netapp function
 	calculate_netapp();
-	#opening output file
-	output = open("output_file.txt", "w")
+	#opening output for total usage
+	output = open("total_usage.txt", "a")
 	output.write("#Date,Time,Vendor,Site,Dept,filer,T1_GB,T3_GB,T3B_GB,T4_GB,aggr,total,used,avail \n")
 	output.write("\n")
 
@@ -83,6 +83,8 @@ def main():
 		output.write(str(isilon_date[i])+","+isilon_time[i]+","+str(isilon_vendors[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i])+"\n")
 		#printing isilon table
 		print(str(isilon_date[i])+","+isilon_time[i]+","+str(isilon_vendors[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i]))
+	output.write("\n")
+
 
 	#total storage T1 T3 T3B T4 
 	#isilon plus netapp
@@ -627,6 +629,77 @@ def main():
 
 
 
+	
+
+
+
+
+	#create department site file to append total usage
+	output = open("dept_site_usage.txt", "a")
+	output.write("Departments\n")
+	output.write("SJ\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(sj_T1_used)) sum(convertFloat(sj_T1_total)),sum(convertFloat(sj_T3_used)) sum(convertFloat(sj_T3_total)),sum(convertFloat(sj_T3B_used)) sum(convertFloat(sj_T3B_total)),sum(convertFloat(sj_T4_used)) sum(convertFloat(sj_T4_total)))
+	output.write("\n")
+
+	output.write("pg\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(pg_T1_used)) sum(convertFloat(pg_T1_total)),sum(convertFloat(pg_T3_used)) sum(convertFloat(pg_T3_total)),sum(convertFloat(pg_T3B_used)) sum(convertFloat(pg_T3B_total)),sum(convertFloat(pg_T4_used)) sum(convertFloat(pg_T4_total)))
+	output.write("\n")
+
+	output.write("nl\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(nl_T1_used)) sum(convertFloat(nl_T1_total)),sum(convertFloat(nl_T3_used)) sum(convertFloat(nl_T3_total)),sum(convertFloat(nl_T3B_used)) sum(convertFloat(nl_T3B_total)),sum(convertFloat(nl_T4_used)) sum(convertFloat(nl_T4_total)))
+	output.write("\n")
+
+	output.write("uk\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(uk_T1_used)) sum(convertFloat(uk_T1_total)),sum(convertFloat(uk_T3_used)) sum(convertFloat(uk_T3_total)),sum(convertFloat(uk_T3B_used)) sum(convertFloat(uk_T3B_total)),sum(convertFloat(uk_T4_used)) sum(convertFloat(uk_T4_total)))
+	output.write("\n")
+
+	output.write("jp\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(jp_T1_used)) sum(convertFloat(jp_T1_total)),sum(convertFloat(jp_T3_used)) sum(convertFloat(jp_T3_total)),sum(convertFloat(jp_T3B_used)) sum(convertFloat(jp_T3B_total)),sum(convertFloat(jp_T4_used)) sum(convertFloat(jp_T4_total)))
+	output.write("\n")
+
+	output.write("hk\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(hk_T1_used)) sum(convertFloat(hk_T1_total)),sum(convertFloat(hk_T3_used)) sum(convertFloat(hk_T3_total)),sum(convertFloat(hk_T3B_used)) sum(convertFloat(hk_T3B_total)),sum(convertFloat(hk_T4_used)) sum(convertFloat(hk_T4_total)))
+	output.write("\n")
+
+	output.write("to\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(to_T1_used)) sum(convertFloat(to_T1_total)),sum(convertFloat(to_T3_used)) sum(convertFloat(to_T3_total)),sum(convertFloat(to_T3B_used)) sum(convertFloat(to_T3B_total)),sum(convertFloat(to_T4_used)) sum(convertFloat(to_T4_total)))
+	output.write("\n")
+
+	output.write("at\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(at_T1_used)) sum(convertFloat(at_T1_total)),sum(convertFloat(at_T3_used)) sum(convertFloat(at_T3_total)),sum(convertFloat(at_T3B_used)) sum(convertFloat(at_T3B_total)),sum(convertFloat(at_T4_used)) sum(convertFloat(at_T4_total)))
+	output.write("\n")
+
+	output.write("\n")
+	output.write("Sites\n")
+
+	output.write("ICE\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(ice_T1_used)) sum(convertFloat(ice_T1_total)),sum(convertFloat(ice_T3_used)) sum(convertFloat(ice_T3_total)),sum(convertFloat(ice_T3B_used)) sum(convertFloat(ice_T3B_total)),sum(convertFloat(ice_T4_used)) sum(convertFloat(ice_T4_total)))
+	output.write("\n")
+
+	output.write("SWIP\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(swip_T1_used)) sum(convertFloat(swip_T1_total)),sum(convertFloat(swip_T3_used)) sum(convertFloat(swip_T3_total)),sum(convertFloat(swip_T3B_used)) sum(convertFloat(swip_T3B_total)),sum(convertFloat(swip_T4_used)) sum(convertFloat(swip_T4_total)))
+	output.write("\n")
+
+	output.write("IT\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(it_T1_used)) sum(convertFloat(it_T1_total)),sum(convertFloat(it_T3_used)) sum(convertFloat(it_T3_total)),sum(convertFloat(it_T3B_used)) sum(convertFloat(it_T3B_total)),sum(convertFloat(it_T4_used)) sum(convertFloat(it_T4_total)))
+	output.write("\n")
+
+	output.write("WWOE\n")
+	output.write("T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write(sum(convertFloat(wwoe_T1_used)) sum(convertFloat(wwoe_T1_total)),sum(convertFloat(wwoe_T3_used)) sum(convertFloat(wwoe_T3_total)),sum(convertFloat(wwoe_T3B_used)) sum(convertFloat(wwoe_T3B_total)),sum(convertFloat(wwoe_T4_used)) sum(convertFloat(wwoe_T4_total)))
+	output.write("\n")
+
 	#start plot figures
 	fig = plt.figure()
 	fig2= plt.figure()
@@ -831,6 +904,12 @@ def uniq(input):
       output.append(x)
   return output
 
+def convertFloat(input):
+	for i in range(len(input)):
+		input[i]=float(input[i])
+	return input
+
+
 
 
 
@@ -973,7 +1052,7 @@ def calculate_isilon():
 
 		if("T" in isilon_total[i]):
 			isilon_total[i]= isilon_total[i][:-1]
-			isilon_total[i] = float(isilon_total[i]) *1024
+			isilon_total[i] = float(isilon_total[i])*1024
 
 
 		#for used
@@ -1153,6 +1232,9 @@ def calculate_netapp():
 
 
 #end netapp function=======================================================
+
+
+
 
 
 
