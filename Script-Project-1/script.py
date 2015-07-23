@@ -1,10 +1,9 @@
 #here are the graph mathplotlib
-from scipy import interp, arange, exp
+#from scipy import interp, arange, exp
 
 
 import numpy
 import matplotlib.pyplot as plt
-import webbrowser
 #date time library
 import datetime
 from time import strftime
