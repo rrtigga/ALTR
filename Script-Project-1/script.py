@@ -64,7 +64,7 @@ def main():
 	#calling netapp function
 	calculate_netapp();
 	#opening output for total usage
-	output = open("/storage/data/GLOBAL/usage_collection/total_usage.txt", "a")
+	output = open("total_usage.txt", "a")
 	output.write("#Date,Time,Vendor,Site,Dept,filer,T1_GB,T3_GB,T3B_GB,T4_GB,aggr,total,used,avail \n")
 	output.write("\n")
 
@@ -444,34 +444,6 @@ def main():
 			at_T4_used.append(isilon_T4[i])
 			at_T4_total.append(isilon_total[i])
 
-	sj_length=[]
-	pg_length=[]
-	nl_length=[]
-	uk_length=[]
-	jp_length=[]
-	hk_length=[]
-	to_length=[]
-	at_length=[]
-
-	for i in range(len(sj_T1_used)):
-		sj_length.append(i+1)
-	for i in range(len(pg_T1_used)):
-		pg_length.append(i+1)
-	for i in range(len(nl_T1_used)):
-		nl_length.append(i+1)
-	for i in range(len(uk_T1_used)):
-		uk_length.append(i+1)
-	for i in range(len(jp_T1_used)):
-		jp_length.append(i+1)
-	for i in range(len(hk_T1_used)):
-		hk_length.append(i+1)
-	for i in range(len(to_T1_used)):
-		to_length.append(i+1)
-	for i in range(len(at_T1_used)):
-		at_length.append(i+1)
-
-
-
 	#department and tiers lists
 	ice_T1_used=[]
 	ice_T3_used=[]
@@ -604,78 +576,52 @@ def main():
 
 
 
-		#length for the departments
 
-		ice_length=[]
-		swip_length=[]
-		it_length=[]
-		wwoe_length=[]
-
-
-		for i in range(len(ice_T1_total)):
-			ice_length.append(i+1)
-		for i in range(len(swip_T1_total)):
-			swip_length.append(i+1)
-		for i in range(len(it_T1_total)):
-			it_length.append(i+1)
-		for i in range(len(wwoe_T1_total)):
-			wwoe_length.append(i+1)
-
-
-	mockup2=[]
-	for i in range(len(netapp_T3_raw)):
-		mockup2.append(i+1)
 
 	#create department site file to append total usage
-	output = open("/storage/data/GLOBAL/usage_collection/dept_site_usage.txt", "a")
+	output = open("dept_site_usage.txt", "a")
 
 	output.write("Departments\n")
-	output.write("SJ\n")
 	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(sj_T1_used)))+"," + str(sum(convertFloat(sj_T1_total))) +"," +str(sum(convertFloat(sj_T3_used)))+"," + str(sum(convertFloat(sj_T3_total)))+"," +str(sum(convertFloat(sj_T3B_used)))+"," + str(sum(convertFloat(sj_T3B_total)))+"," +str(sum(convertFloat(sj_T4_used)))+"," + str(sum(convertFloat(sj_T4_total))))
+
+	output.write("SJ\n")
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(sj_T1_used)))+"," + str(sum(convertFloat(sj_T1_total))) +"," +str(sum(convertFloat(sj_T3_used)))+"," + str(sum(convertFloat(sj_T3_total)))+"," +str(sum(convertFloat(sj_T3B_used)))+"," + str(sum(convertFloat(sj_T3B_total)))+"," +str(sum(convertFloat(sj_T4_used)))+"," + str(sum(convertFloat(sj_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 
 	output.write("pg\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(pg_T1_used))) +"," +str(sum(convertFloat(pg_T1_total)))+"," +str(sum(convertFloat(pg_T3_used)))+"," + str(sum(convertFloat(pg_T3_total)))+"," +str(sum(convertFloat(pg_T3B_used)))+"," + str(sum(convertFloat(pg_T3B_total)))+"," +str(sum(convertFloat(pg_T4_used)))+"," + str(sum(convertFloat(pg_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(pg_T1_used))) +"," +str(sum(convertFloat(pg_T1_total)))+"," +str(sum(convertFloat(pg_T3_used)))+"," + str(sum(convertFloat(pg_T3_total)))+"," +str(sum(convertFloat(pg_T3B_used)))+"," + str(sum(convertFloat(pg_T3B_total)))+"," +str(sum(convertFloat(pg_T4_used)))+"," + str(sum(convertFloat(pg_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 	output.write("nl\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(nl_T1_used))) +"," +str(sum(convertFloat(nl_T1_total)))+"," +str(sum(convertFloat(nl_T3_used)))+"," + str(sum(convertFloat(nl_T3_total)))+"," +str(sum(convertFloat(nl_T3B_used))) +"," +str(sum(convertFloat(nl_T3B_total)))+"," +str(sum(convertFloat(nl_T4_used))) +"," +str(sum(convertFloat(nl_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(nl_T1_used))) +"," +str(sum(convertFloat(nl_T1_total)))+"," +str(sum(convertFloat(nl_T3_used)))+"," + str(sum(convertFloat(nl_T3_total)))+"," +str(sum(convertFloat(nl_T3B_used))) +"," +str(sum(convertFloat(nl_T3B_total)))+"," +str(sum(convertFloat(nl_T4_used))) +"," +str(sum(convertFloat(nl_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 	output.write("uk\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(uk_T1_used)))+"," + str(sum(convertFloat(uk_T1_total)))+"," +str(sum(convertFloat(uk_T3_used)))+"," + str(sum(convertFloat(uk_T3_total)))+"," +str(sum(convertFloat(uk_T3B_used))) +"," +str(sum(convertFloat(uk_T3B_total)))+"," +str(sum(convertFloat(uk_T4_used)) )+"," +str(sum(convertFloat(uk_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(uk_T1_used)))+"," + str(sum(convertFloat(uk_T1_total)))+"," +str(sum(convertFloat(uk_T3_used)))+"," + str(sum(convertFloat(uk_T3_total)))+"," +str(sum(convertFloat(uk_T3B_used))) +"," +str(sum(convertFloat(uk_T3B_total)))+"," +str(sum(convertFloat(uk_T4_used)) )+"," +str(sum(convertFloat(uk_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 	output.write("jp\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(jp_T1_used))) +"," +str(sum(convertFloat(jp_T1_total)))+"," +str(sum(convertFloat(jp_T3_used))) +"," +str(sum(convertFloat(jp_T3_total)))+"," +str(sum(convertFloat(jp_T3B_used))) +"," +str(sum(convertFloat(jp_T3B_total)))+"," +str(sum(convertFloat(jp_T4_used))) +"," +str(sum(convertFloat(jp_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(jp_T1_used))) +"," +str(sum(convertFloat(jp_T1_total)))+"," +str(sum(convertFloat(jp_T3_used))) +"," +str(sum(convertFloat(jp_T3_total)))+"," +str(sum(convertFloat(jp_T3B_used))) +"," +str(sum(convertFloat(jp_T3B_total)))+"," +str(sum(convertFloat(jp_T4_used))) +"," +str(sum(convertFloat(jp_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 	output.write("hk\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(hk_T1_used))) +"," +str(sum(convertFloat(hk_T1_total)))+"," +str(sum(convertFloat(hk_T3_used))) +"," +str(sum(convertFloat(hk_T3_total)))+"," +str(sum(convertFloat(hk_T3B_used))) +"," +str(sum(convertFloat(hk_T3B_total)))+"," +str(sum(convertFloat(hk_T4_used)))+"," + str(sum(convertFloat(hk_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(hk_T1_used))) +"," +str(sum(convertFloat(hk_T1_total)))+"," +str(sum(convertFloat(hk_T3_used))) +"," +str(sum(convertFloat(hk_T3_total)))+"," +str(sum(convertFloat(hk_T3B_used))) +"," +str(sum(convertFloat(hk_T3B_total)))+"," +str(sum(convertFloat(hk_T4_used)))+"," + str(sum(convertFloat(hk_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 	output.write("to\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(to_T1_used)))+"," + str(sum(convertFloat(to_T1_total)))+"," +str(sum(convertFloat(to_T3_used)))+"," + str(sum(convertFloat(to_T3_total)))+"," + str(sum(convertFloat(to_T3B_used)))+"," + str(sum(convertFloat(to_T3B_total)))+"," +str(sum(convertFloat(to_T4_used)))+"," + str(sum(convertFloat(to_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(to_T1_used)))+"," + str(sum(convertFloat(to_T1_total)))+"," +str(sum(convertFloat(to_T3_used)))+"," + str(sum(convertFloat(to_T3_total)))+"," + str(sum(convertFloat(to_T3B_used)))+"," + str(sum(convertFloat(to_T3B_total)))+"," +str(sum(convertFloat(to_T4_used)))+"," + str(sum(convertFloat(to_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 	output.write("at\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(at_T1_used)))+"," + str(sum(convertFloat(at_T1_total)))+"," + str(sum(convertFloat(at_T3_used)))+"," + str(sum(convertFloat(at_T3_total)))+"," + str(sum(convertFloat(at_T3B_used)))+"," + str(sum(convertFloat(at_T3B_total)))+"," + str(sum(convertFloat(at_T4_used)))+"," + str(sum(convertFloat(at_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(at_T1_used)))+"," + str(sum(convertFloat(at_T1_total)))+"," + str(sum(convertFloat(at_T3_used)))+"," + str(sum(convertFloat(at_T3_total)))+"," + str(sum(convertFloat(at_T3B_used)))+"," + str(sum(convertFloat(at_T3B_total)))+"," + str(sum(convertFloat(at_T4_used)))+"," + str(sum(convertFloat(at_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
@@ -683,28 +629,26 @@ def main():
 	output.write("\n")
 	output.write("\n")
 	output.write("Sites\n")
+	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+
 	output.write("\n")
 	output.write("ICE\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(ice_T1_used)))+"," +  str(sum(convertFloat(ice_T1_total)))+"," + str(sum(convertFloat(ice_T3_used)))+"," + str(sum(convertFloat(ice_T3_total)))+"," + str(sum(convertFloat(ice_T3B_used)))+"," + str(sum(convertFloat(ice_T3B_total)))+"," + str(sum(convertFloat(ice_T4_used)))+"," + str(sum(convertFloat(ice_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(ice_T1_used)))+"," +  str(sum(convertFloat(ice_T1_total)))+"," + str(sum(convertFloat(ice_T3_used)))+"," + str(sum(convertFloat(ice_T3_total)))+"," + str(sum(convertFloat(ice_T3B_used)))+"," + str(sum(convertFloat(ice_T3B_total)))+"," + str(sum(convertFloat(ice_T4_used)))+"," + str(sum(convertFloat(ice_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 	output.write("SWIP\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+  str(sum(convertFloat(swip_T1_used)))+"," +  str(sum(convertFloat(swip_T1_total)))+"," + str(sum(convertFloat(swip_T3_used)))+"," + str(sum(convertFloat(swip_T3_total)))+"," + str(sum(convertFloat(swip_T3B_used)))+"," +  str(sum(convertFloat(swip_T3B_total)))+"," + str(sum(convertFloat(swip_T4_used)))+"," +  str(sum(convertFloat(swip_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+  str(sum(convertFloat(swip_T1_used)))+"," +  str(sum(convertFloat(swip_T1_total)))+"," + str(sum(convertFloat(swip_T3_used)))+"," + str(sum(convertFloat(swip_T3_total)))+"," + str(sum(convertFloat(swip_T3B_used)))+"," +  str(sum(convertFloat(swip_T3B_total)))+"," + str(sum(convertFloat(swip_T4_used)))+"," +  str(sum(convertFloat(swip_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 	output.write("IT\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+  str(sum(convertFloat(it_T1_used)))+"," +  str(sum(convertFloat(it_T1_total))) +"," +str(sum(convertFloat(it_T3_used)))+"," +  str(sum(convertFloat(it_T3_total)))+"," + str(sum(convertFloat(it_T3B_used)))+"," + str(sum(convertFloat(it_T3B_total)))+"," + str(sum(convertFloat(it_T4_used)))+"," + str(sum(convertFloat(it_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+  str(sum(convertFloat(it_T1_used)))+"," +  str(sum(convertFloat(it_T1_total))) +"," +str(sum(convertFloat(it_T3_used)))+"," +  str(sum(convertFloat(it_T3_total)))+"," + str(sum(convertFloat(it_T3B_used)))+"," + str(sum(convertFloat(it_T3B_total)))+"," + str(sum(convertFloat(it_T4_used)))+"," + str(sum(convertFloat(it_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 	output.write("WWOE\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
-	output.write(now.strftime("%Y-%m-%d")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(wwoe_T1_used)))+"," + str(sum(convertFloat(wwoe_T1_total)))+"," + str(sum(convertFloat(wwoe_T3_used)))+"," +  str(sum(convertFloat(wwoe_T3_total)))+"," + str(sum(convertFloat(wwoe_T3B_used)))+"," + str(sum(convertFloat(wwoe_T3B_total)))+"," + str(sum(convertFloat(wwoe_T4_used)))+"," + str(sum(convertFloat(wwoe_T4_total))))
+	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(wwoe_T1_used)))+"," + str(sum(convertFloat(wwoe_T1_total)))+"," + str(sum(convertFloat(wwoe_T3_used)))+"," +  str(sum(convertFloat(wwoe_T3_total)))+"," + str(sum(convertFloat(wwoe_T3B_used)))+"," + str(sum(convertFloat(wwoe_T3B_total)))+"," + str(sum(convertFloat(wwoe_T4_used)))+"," + str(sum(convertFloat(wwoe_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
@@ -758,6 +702,7 @@ def main():
 	ax2.plot(mockup2,netapp_T3_raw, c='r', label='T3 Raw')
 	ax2.plot(mockup2,netapp_T3B_raw, c='y', label='T3B Raw')
 	ax2.plot(mockup2,netapp_T4_raw, c='g', label='T4 Raw')
+
 
 	#plot plots for tier and site
 	#sj T1
@@ -923,7 +868,7 @@ def calculate_isilon():
 	#read input of file
 	try:
 		#open input file
-		input_file = open("/storage/data/GLOBAL/storage_data.txt", "r")
+		input_file = open("jackfinal.txt", "r")
 	except:
 		#if file can't be read, exit
 		print "Could not read file:", filename
@@ -947,7 +892,7 @@ def calculate_isilon():
 				isilon_aggr.append("NULL")
 				isilon_site.append(isilon_filer_temp[:2])
 				#getting date
-				isilon_date.append(now.strftime("%Y-%m-%d"))
+				isilon_date.append(now.strftime("%m-%d-%Y"))
 				isilon_time.append(now.strftime("%H:%M"))
 				#adding vendor name
 				isilon_vendors.append("isilon")
@@ -1087,7 +1032,7 @@ def calculate_netapp():
 
 	#open file name from user
 	try:
-		input_file = open("/storage/data/GLOBAL/storage_data.txt", "r")
+		input_file = open("jackfinal.txt", "r")
 
 	#throw exception if file cannot be read then exit
 	except:
@@ -1128,7 +1073,7 @@ def calculate_netapp():
 					netapp_dept.append(netapp_filer_temp[3:])
 
 					#adding date to list
-					netapp_date.append(now.strftime("%Y-%m-%d"))
+					netapp_date.append(now.strftime("%m-%d-%Y"))
 					netapp_time.append(now.strftime("%H:%M"))
 
 					#conditionals then adds depending on keywords on line, based on that the value will be added 
