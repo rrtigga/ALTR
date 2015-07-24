@@ -64,15 +64,15 @@ def main():
 	#calling netapp function
 	calculate_netapp();
 	#opening output for total usage
-	output = open("total_usage.txt", "a")
+	output = open("total_usage1.txt", "a")
 	output.write("#Date,Time,Vendor,Site,Dept,filer,T1_GB,T3_GB,T3B_GB,T4_GB,aggr,total,used,avail \n")
 	output.write("\n")
 
-	print("#Date,Time,Vendor,Site,Dept,filer,T1_GB,T3_GB,T3B_GB,T4_GB,aggr,total,used,avail \n")
+	#print("#Date,Time,Vendor,Site,Dept,filer,T1_GB,T3_GB,T3B_GB,T4_GB,aggr,total,used,avail \n")
 	for i in range(len(netapp_aggr)):
 		output.write(str(netapp_date[i])+"," +netapp_time[i]+","+str(netapp_vendors[i])+"," +str(netapp_site[i])+ ","+ str(netapp_dept[i])+ ","+ str(netapp_filer[i])+ ","+str(netapp_T1[i])+ ","+str(netapp_T3[i])+","+ str(netapp_T3B[i])+ ","+str(netapp_T4[i])+","+ str(netapp_aggr[i])+ ","+str(netapp_total[i])+ ","+str(netapp_used[i])+","+ str(netapp_avail[i])+"\n")
 		#print netapp table
-		print (str(netapp_date[i])+"," +netapp_time[i]+","+str(netapp_vendors[i])+"," +str(netapp_site[i])+ ","+ str(netapp_dept[i])+ ","+ str(netapp_filer[i])+ ","+str(netapp_T1[i])+ ","+str(netapp_T3[i])+","+ str(netapp_T3B[i])+ ","+str(netapp_T4[i])+","+ str(netapp_aggr[i])+ ","+str(netapp_total[i])+ ","+str(netapp_used[i])+","+ str(netapp_avail[i]))
+		#print (str(netapp_date[i])+"," +netapp_time[i]+","+str(netapp_vendors[i])+"," +str(netapp_site[i])+ ","+ str(netapp_dept[i])+ ","+ str(netapp_filer[i])+ ","+str(netapp_T1[i])+ ","+str(netapp_T3[i])+","+ str(netapp_T3B[i])+ ","+str(netapp_T4[i])+","+ str(netapp_aggr[i])+ ","+str(netapp_total[i])+ ","+str(netapp_used[i])+","+ str(netapp_avail[i]))
 
 	output.write("\n")
 	output.write("\n")
@@ -81,8 +81,11 @@ def main():
 	for i in range(len(isilon_site)):
 		output.write(str(isilon_date[i])+","+isilon_time[i]+","+str(isilon_vendors[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i])+"\n")
 		#printing isilon table
-		print(str(isilon_date[i])+","+isilon_time[i]+","+str(isilon_vendors[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i]))
+		#print(str(isilon_date[i])+","+isilon_time[i]+","+str(isilon_vendors[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i]))
 	output.write("\n")
+
+
+
 
 
 	#total storage T1 T3 T3B T4 
@@ -115,7 +118,6 @@ def main():
 
 
 	for i in range(len(netapp_dept)):
-
 		netapp_T1_raw.append(float(netapp_T1[i]) /.65)
 		netapp_T3_raw.append(float(netapp_T3[i])/.55)
 		netapp_T3B_raw.append(float(netapp_T3B[i])/.55)
@@ -124,29 +126,13 @@ def main():
 
 
 
-	print total_storage
-	print used_storage
+	#print total_storage
+	#print used_storage
 
 	total_storageList=[]
 	used_storageList =[]
 	total_storageList.append(total_storage)
 	used_storageList.append(used_storage)
-
-	#some twenty mockup numbers
-	mockup=[]
-	mockup.append(1)
-
-	for i in range(20):
-		if(i==7 or i==14):
-			total_storage+= total_storage*1.5
-			total_storageList.append(total_storage)
-		else:
-			total_storageList.append(total_storage)
-
-
-		used_storage+=used_storage*1.05
-		used_storageList.append(used_storage)
-		mockup.append(i+1)	
 
 
 	dept_site=[]
@@ -579,48 +565,48 @@ def main():
 
 
 	#create department site file to append total usage
-	output = open("dept_site_usage.txt", "a")
+	output = open("dept_site_usage1.txt", "a")
 
-	output.write("Departments\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write("#Departments\n")
+	output.write("#Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
 
-	output.write("SJ\n")
+	output.write("#SJ\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(sj_T1_used)))+"," + str(sum(convertFloat(sj_T1_total))) +"," +str(sum(convertFloat(sj_T3_used)))+"," + str(sum(convertFloat(sj_T3_total)))+"," +str(sum(convertFloat(sj_T3B_used)))+"," + str(sum(convertFloat(sj_T3B_total)))+"," +str(sum(convertFloat(sj_T4_used)))+"," + str(sum(convertFloat(sj_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
 
-	output.write("pg\n")
+	output.write("#pg\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(pg_T1_used))) +"," +str(sum(convertFloat(pg_T1_total)))+"," +str(sum(convertFloat(pg_T3_used)))+"," + str(sum(convertFloat(pg_T3_total)))+"," +str(sum(convertFloat(pg_T3B_used)))+"," + str(sum(convertFloat(pg_T3B_total)))+"," +str(sum(convertFloat(pg_T4_used)))+"," + str(sum(convertFloat(pg_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
-	output.write("nl\n")
+	output.write("#nl\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(nl_T1_used))) +"," +str(sum(convertFloat(nl_T1_total)))+"," +str(sum(convertFloat(nl_T3_used)))+"," + str(sum(convertFloat(nl_T3_total)))+"," +str(sum(convertFloat(nl_T3B_used))) +"," +str(sum(convertFloat(nl_T3B_total)))+"," +str(sum(convertFloat(nl_T4_used))) +"," +str(sum(convertFloat(nl_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
-	output.write("uk\n")
+	output.write("#uk\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(uk_T1_used)))+"," + str(sum(convertFloat(uk_T1_total)))+"," +str(sum(convertFloat(uk_T3_used)))+"," + str(sum(convertFloat(uk_T3_total)))+"," +str(sum(convertFloat(uk_T3B_used))) +"," +str(sum(convertFloat(uk_T3B_total)))+"," +str(sum(convertFloat(uk_T4_used)) )+"," +str(sum(convertFloat(uk_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
-	output.write("jp\n")
+	output.write("#jp\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(jp_T1_used))) +"," +str(sum(convertFloat(jp_T1_total)))+"," +str(sum(convertFloat(jp_T3_used))) +"," +str(sum(convertFloat(jp_T3_total)))+"," +str(sum(convertFloat(jp_T3B_used))) +"," +str(sum(convertFloat(jp_T3B_total)))+"," +str(sum(convertFloat(jp_T4_used))) +"," +str(sum(convertFloat(jp_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
-	output.write("hk\n")
+	output.write("#hk\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(hk_T1_used))) +"," +str(sum(convertFloat(hk_T1_total)))+"," +str(sum(convertFloat(hk_T3_used))) +"," +str(sum(convertFloat(hk_T3_total)))+"," +str(sum(convertFloat(hk_T3B_used))) +"," +str(sum(convertFloat(hk_T3B_total)))+"," +str(sum(convertFloat(hk_T4_used)))+"," + str(sum(convertFloat(hk_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
-	output.write("to\n")
+	output.write("#to\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(to_T1_used)))+"," + str(sum(convertFloat(to_T1_total)))+"," +str(sum(convertFloat(to_T3_used)))+"," + str(sum(convertFloat(to_T3_total)))+"," + str(sum(convertFloat(to_T3B_used)))+"," + str(sum(convertFloat(to_T3B_total)))+"," +str(sum(convertFloat(to_T4_used)))+"," + str(sum(convertFloat(to_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
-	output.write("at\n")
+	output.write("#at\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(at_T1_used)))+"," + str(sum(convertFloat(at_T1_total)))+"," + str(sum(convertFloat(at_T3_used)))+"," + str(sum(convertFloat(at_T3_total)))+"," + str(sum(convertFloat(at_T3B_used)))+"," + str(sum(convertFloat(at_T3B_total)))+"," + str(sum(convertFloat(at_T4_used)))+"," + str(sum(convertFloat(at_T4_total))))
 	output.write("\n")
 	output.write("\n")
@@ -628,224 +614,318 @@ def main():
 	output.write("\n")
 	output.write("\n")
 	output.write("\n")
-	output.write("Sites\n")
-	output.write("Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
+	output.write("#Sites\n")
+	output.write("#Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
 
 	output.write("\n")
-	output.write("ICE\n")
+	output.write("#ICE\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(ice_T1_used)))+"," +  str(sum(convertFloat(ice_T1_total)))+"," + str(sum(convertFloat(ice_T3_used)))+"," + str(sum(convertFloat(ice_T3_total)))+"," + str(sum(convertFloat(ice_T3B_used)))+"," + str(sum(convertFloat(ice_T3B_total)))+"," + str(sum(convertFloat(ice_T4_used)))+"," + str(sum(convertFloat(ice_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
-	output.write("SWIP\n")
+	output.write("#SWIP\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+  str(sum(convertFloat(swip_T1_used)))+"," +  str(sum(convertFloat(swip_T1_total)))+"," + str(sum(convertFloat(swip_T3_used)))+"," + str(sum(convertFloat(swip_T3_total)))+"," + str(sum(convertFloat(swip_T3B_used)))+"," +  str(sum(convertFloat(swip_T3B_total)))+"," + str(sum(convertFloat(swip_T4_used)))+"," +  str(sum(convertFloat(swip_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
-	output.write("IT\n")
+	output.write("#IT\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+  str(sum(convertFloat(it_T1_used)))+"," +  str(sum(convertFloat(it_T1_total))) +"," +str(sum(convertFloat(it_T3_used)))+"," +  str(sum(convertFloat(it_T3_total)))+"," + str(sum(convertFloat(it_T3B_used)))+"," + str(sum(convertFloat(it_T3B_total)))+"," + str(sum(convertFloat(it_T4_used)))+"," + str(sum(convertFloat(it_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
-	output.write("WWOE\n")
+	output.write("#WWOE\n")
 	output.write(now.strftime("%m-%d-%Y")+","+now.strftime("%H:%M")+","+ str(sum(convertFloat(wwoe_T1_used)))+"," + str(sum(convertFloat(wwoe_T1_total)))+"," + str(sum(convertFloat(wwoe_T3_used)))+"," +  str(sum(convertFloat(wwoe_T3_total)))+"," + str(sum(convertFloat(wwoe_T3B_used)))+"," + str(sum(convertFloat(wwoe_T3B_total)))+"," + str(sum(convertFloat(wwoe_T4_used)))+"," + str(sum(convertFloat(wwoe_T4_total))))
 	output.write("\n")
 	output.write("\n")
 
-	#start plot figures
-	fig = plt.figure()
-	fig2= plt.figure()
-
-	#by site by tier
-	fig3= plt.figure()
-	fig4=plt.figure()
-	fig5=plt.figure()
-	fig6=plt.figure()
-	fig7=plt.figure()
-	fig8=plt.figure()
-	fig9=plt.figure()
-	fig10=plt.figure()
 
 
-	#by dept by tier
-	fig11=plt.figure()
-	fig12=plt.figure()
-	fig13=plt.figure()
-	fig14=plt.figure()
-
-	ax1 = fig.add_subplot(111)
-	ax2= fig2.add_subplot(111)
-
-	#by site by tier
-	ax3=fig3.add_subplot(111)
-	ax4=fig4.add_subplot(111)
-	ax5=fig5.add_subplot(111)
-	ax6=fig6.add_subplot(111)
-	ax7=fig7.add_subplot(111)
-	ax8=fig8.add_subplot(111)
-	ax9=fig9.add_subplot(111)
-	ax10=fig10.add_subplot(111)
-
-
-	#by dept by tier
-	ax11=fig11.add_subplot(111)
-	ax12=fig12.add_subplot(111)
-	ax13=fig13.add_subplot(111)
-	ax14=fig14.add_subplot(111)
-
-
-	#full storage mockup
-	ax1.plot(mockup, used_storageList, c='b', label='Full Storage Used')
-	ax1.plot(mockup,total_storageList, c='r', label='Full Storage Total')
-
-	ax2.plot(mockup2,netapp_T1_raw , c='b', label='T1 Raw')
-	ax2.plot(mockup2,netapp_T3_raw, c='r', label='T3 Raw')
-	ax2.plot(mockup2,netapp_T3B_raw, c='y', label='T3B Raw')
-	ax2.plot(mockup2,netapp_T4_raw, c='g', label='T4 Raw')
-
-
-	#plot plots for tier and site
-	#sj T1
-	ax3.plot(sj_length,sj_T1_used, c='b', label='SJ T1 Used')
-	ax3.plot(sj_length,sj_T1_total, c='w', label='SJ T1 Total')
-	#sj T3
-	ax3.plot(sj_length,sj_T3_used , c='g', label='SJ T3 Used')
-	ax3.plot(sj_length,sj_T3_total, c='r', label='SJ T3 Total')
-	#sj T3B
-	ax3.plot(sj_length,sj_T3B_used , c='m', label='SJ T3B Used')
-	ax3.plot(sj_length,sj_T3B_total, c='c', label='SJ T3B Total')
-	#sj T4
-	ax3.plot(sj_length,sj_T4_used , c='y', label='SJ T4 Used')
-	ax3.plot(sj_length,sj_T4_total, c='k', label='SJ T4 Total')
-
-	#pg T1
-	ax4.plot(pg_length,pg_T1_used, c='b', label='pg T1 Used')
-	ax4.plot(pg_length,pg_T1_total, c='w', label='pg T1 Total')
-	#pg T3
-	ax4.plot(pg_length,pg_T3_used , c='g', label='pg T3 Used')
-	ax4.plot(pg_length,pg_T3_total, c='r', label='pg T3 Total')
-	#pg T3B
-	ax4.plot(pg_length,pg_T3B_used , c='m', label='pg T3B Used')
-	ax4.plot(pg_length,pg_T3B_total, c='c', label='pg T3B Total')
-	#pg T4
-	ax4.plot(pg_length,pg_T4_used , c='y', label='pg T4 Used')
-	ax4.plot(pg_length,pg_T4_total, c='k', label='pg T4 Total')
-
-	#nl T1
-	ax5.plot(nl_length,nl_T1_used, c='b', label='nl T1 Used')
-	ax5.plot(nl_length,nl_T1_total, c='w', label='nl T1 Total')
-	#nl T3
-	ax5.plot(nl_length,nl_T3_used , c='g', label='nl T3 Used')
-	ax5.plot(nl_length,nl_T3_total, c='r', label='nl T3 Total')
-	#nl T3B
-	ax5.plot(nl_length,nl_T3B_used , c='m', label='nl T3B Used')
-	ax5.plot(nl_length,nl_T3B_total, c='c', label='nl T3B Total')
-	#nl T4
-	ax5.plot(nl_length,nl_T4_used , c='y', label='nl T4 Used')
-	ax5.plot(nl_length,nl_T4_total, c='k', label='nl T4 Total')
-
-	#uk T1
-	ax6.plot(uk_length,uk_T1_used, c='b', label='uk T1 Used')
-	ax6.plot(uk_length,uk_T1_total, c='w', label='uk T1 Total')
-	#uk T3
-	ax6.plot(uk_length,uk_T3_used , c='g', label='uk T3 Used')
-	ax6.plot(uk_length,uk_T3_total, c='r', label='uk T3 Total')
-	#uk T3B
-	ax6.plot(uk_length,uk_T3B_used , c='m', label='uk T3B Used')
-	ax6.plot(uk_length,uk_T3B_total, c='c', label='uk T3B Total')
-	#uk T4
-	ax6.plot(uk_length,uk_T4_used , c='y', label='uk T4 Used')
-	ax6.plot(uk_length,uk_T4_total, c='k', label='uk T4 Total')
-
-	#jp T1
-	ax7.plot(jp_length,jp_T1_used, c='b', label='jp T1 Used')
-	ax7.plot(jp_length,jp_T1_total, c='w', label='jp T1 Total')
-	#jp T3
-	ax7.plot(jp_length,jp_T3_used , c='g', label='jp T3 Used')
-	ax7.plot(jp_length,jp_T3_total, c='r', label='jp T3 Total')
-	#jp T3B
-	ax7.plot(jp_length,jp_T3B_used , c='m', label='jp T3B Used')
-	ax7.plot(jp_length,jp_T3B_total, c='c', label='jp T3B Total')
-	#jp T4
-	ax7.plot(jp_length,jp_T4_used , c='y', label='jp T4 Used')
-	ax7.plot(jp_length,jp_T4_total, c='k', label='jp T4 Total')
-
-
-	#hk T1
-	ax8.plot(hk_length,hk_T1_used, c='b', label='hk T1 Used')
-	ax8.plot(hk_length,hk_T1_total, c='w', label='hk T1 Total')
-	#hk T3
-	ax8.plot(hk_length,hk_T3_used , c='g', label='hk T3 Used')
-	ax8.plot(hk_length,hk_T3_total, c='r', label='hk T3 Total')
-	#hk T3B
-	ax8.plot(hk_length,hk_T3B_used , c='m', label='hk T3B Used')
-	ax8.plot(hk_length,hk_T3B_total, c='c', label='hk T3B Total')
-	#hk T4
-	ax8.plot(hk_length,hk_T4_used , c='y', label='hk T4 Used')
-	ax8.plot(hk_length,hk_T4_total, c='k', label='hk T4 Total')
-
-
-	#to T1
-	ax9.plot(to_length,to_T1_used, c='b', label='to T1 Used')
-	ax9.plot(to_length,to_T1_total, c='w', label='to T1 Total')
-	#to T3
-	ax9.plot(to_length,to_T3_used , c='g', label='to T3 Used')
-	ax9.plot(to_length,to_T3_total, c='r', label='to T3 Total')
-	#to T3B
-	ax9.plot(to_length,to_T3B_used , c='m', label='to T3B Used')
-	ax9.plot(to_length,to_T3B_total, c='c', label='to T3B Total')
-	#to T4
-	ax9.plot(to_length,to_T4_used , c='y', label='to T4 Used')
-	ax9.plot(to_length,to_T4_total, c='k', label='to T4 Total')
-
-	#at T1
-	ax10.plot(at_length,at_T1_used, c='b', label='at T1 Used')
-	ax10.plot(at_length,at_T1_total, c='w', label='at T1 Total')
-	#to T3
-	ax10.plot(at_length,at_T3_used , c='g', label='at T3 Used')
-	ax10.plot(at_length,at_T3_total, c='r', label='at T3 Total')
-	#to T3B
-	ax10.plot(at_length,at_T3B_used , c='m', label='at T3B Used')
-	ax10.plot(at_length,at_T3B_total, c='c', label='at T3B Total')
-	#to T4
-	ax10.plot(at_length,at_T4_used , c='y', label='at T4 Used')
-	ax10.plot(at_length,at_T4_total, c='k', label='at T4 Total')
-
-	#plot plots for depts and tiers
-
-	#ice
-	ax11.plot(ice_length,ice_T1_used , c='y', marker="s", label='Ice Used')
-	ax11.plot(ice_length,ice_T1_total , c='k', marker="s", label='Ice Total')
-
-	#swip
-	ax12.plot(swip_length,swip_T1_used , c='b', marker="s", label='SWIP Used')
-	ax12.plot(swip_length,swip_T1_total , c='r', marker="s", label='SWIP Total')
-
-	#it
-	ax13.plot(it_length,it_T1_used , c='m', marker="s", label='IT Used')
-	ax13.plot(it_length,it_T1_total , c='c', marker="s", label='IT Total')
-
-	#wwoe
-	ax14.plot(wwoe_length,wwoe_T1_used , c='g', marker="s", label='WWOE Used')
-	ax14.plot(wwoe_length,wwoe_T1_total , c='w', marker="s", label='WWOE Total')
+	#opening the total usage file to get the total usages dates 
+	try:
+		#open input file
+		input_file = open("total_usage1.txt", "r")
+	except:
+		#if file can't be read, exit
+		print "Could not read file:", input_file
+   		sys.exit()
 	
-	ax1.legend(loc='upper left')
-	ax2.legend(loc='upper left')
-	ax3.legend(loc='upper left')
-	ax4.legend(loc='upper left')
-	ax5.legend(loc='upper left')
-	ax6.legend(loc='upper left')
-	ax7.legend(loc='upper left')
-	ax8.legend(loc='upper left')
-	ax9.legend(loc='upper left')
-	ax10.legend(loc='upper left')
-	ax11.legend(loc='upper left')
-	ax12.legend(loc='upper left')
-	ax13.legend(loc='upper left')
-	ax14.legend(loc='upper left')
+
+
+   	total_usage_date_store=[]
+
+	#iterate through lines of output
+	#get the number of dates and different dates in order to generate the graphs
+	for i, line in enumerate(input_file):
+		if(line =='\n'):
+			continue
+		else:
+			if not('#' in line):
+				line_store=line.split(",")
+				total_usage_date_store.append(line_store[0])
+
+	print uniq(total_usage_date_store)
+
+
+	dept_site_usage_date_store=[]
+	
+	try:
+		#open input file
+		input_file = open("dept_site_usage1.txt", "r")
+	except:
+		#if file can't be read, exit
+		print "Could not read file:", input_file
+   		sys.exit()
+
+   	#iterate through lines of output of dept_site_usage text files
+	#get the number of dates and different dates in order to generate the graphs
+	for i, line in enumerate(input_file):
+		if(line =='\n'):
+			continue
+		else:
+			if not('#' in line):
+				line_store=line.split(",")
+				dept_site_usage_date_store.append(line_store[0])
+
+	print uniq(dept_site_usage_date_store)
+
 
 	
-	plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	# #start plot figures
+	# fig = plt.figure()
+	# fig2= plt.figure()
+
+	# #by site by tier
+	# fig3= plt.figure()
+	# fig4=plt.figure()
+	# fig5=plt.figure()
+	# fig6=plt.figure()
+	# fig7=plt.figure()
+	# fig8=plt.figure()
+	# fig9=plt.figure()
+	# fig10=plt.figure()
+
+
+	# #by dept by tier
+	# fig11=plt.figure()
+	# fig12=plt.figure()
+	# fig13=plt.figure()
+	# fig14=plt.figure()
+
+	# ax1 = fig.add_subplot(111)
+	# ax2= fig2.add_subplot(111)
+
+	# #by site by tier
+	# ax3=fig3.add_subplot(111)
+	# ax4=fig4.add_subplot(111)
+	# ax5=fig5.add_subplot(111)
+	# ax6=fig6.add_subplot(111)
+	# ax7=fig7.add_subplot(111)
+	# ax8=fig8.add_subplot(111)
+	# ax9=fig9.add_subplot(111)
+	# ax10=fig10.add_subplot(111)
+
+
+	# #by dept by tier
+	# ax11=fig11.add_subplot(111)
+	# ax12=fig12.add_subplot(111)
+	# ax13=fig13.add_subplot(111)
+	# ax14=fig14.add_subplot(111)
+
+
+	# #full storage mockup
+	# ax1.plot(mockup, used_storageList, c='b', label='Full Storage Used')
+	# ax1.plot(mockup,total_storageList, c='r', label='Full Storage Total')
+
+	# ax2.plot(mockup2,netapp_T1_raw , c='b', label='T1 Raw')
+	# ax2.plot(mockup2,netapp_T3_raw, c='r', label='T3 Raw')
+	# ax2.plot(mockup2,netapp_T3B_raw, c='y', label='T3B Raw')
+	# ax2.plot(mockup2,netapp_T4_raw, c='g', label='T4 Raw')
+
+
+	# #plot plots for tier and site
+	# #sj T1
+	# ax3.plot(sj_length,sj_T1_used, c='b', label='SJ T1 Used')
+	# ax3.plot(sj_length,sj_T1_total, c='w', label='SJ T1 Total')
+	# #sj T3
+	# ax3.plot(sj_length,sj_T3_used , c='g', label='SJ T3 Used')
+	# ax3.plot(sj_length,sj_T3_total, c='r', label='SJ T3 Total')
+	# #sj T3B
+	# ax3.plot(sj_length,sj_T3B_used , c='m', label='SJ T3B Used')
+	# ax3.plot(sj_length,sj_T3B_total, c='c', label='SJ T3B Total')
+	# #sj T4
+	# ax3.plot(sj_length,sj_T4_used , c='y', label='SJ T4 Used')
+	# ax3.plot(sj_length,sj_T4_total, c='k', label='SJ T4 Total')
+
+	# #pg T1
+	# ax4.plot(pg_length,pg_T1_used, c='b', label='pg T1 Used')
+	# ax4.plot(pg_length,pg_T1_total, c='w', label='pg T1 Total')
+	# #pg T3
+	# ax4.plot(pg_length,pg_T3_used , c='g', label='pg T3 Used')
+	# ax4.plot(pg_length,pg_T3_total, c='r', label='pg T3 Total')
+	# #pg T3B
+	# ax4.plot(pg_length,pg_T3B_used , c='m', label='pg T3B Used')
+	# ax4.plot(pg_length,pg_T3B_total, c='c', label='pg T3B Total')
+	# #pg T4
+	# ax4.plot(pg_length,pg_T4_used , c='y', label='pg T4 Used')
+	# ax4.plot(pg_length,pg_T4_total, c='k', label='pg T4 Total')
+
+	# #nl T1
+	# ax5.plot(nl_length,nl_T1_used, c='b', label='nl T1 Used')
+	# ax5.plot(nl_length,nl_T1_total, c='w', label='nl T1 Total')
+	# #nl T3
+	# ax5.plot(nl_length,nl_T3_used , c='g', label='nl T3 Used')
+	# ax5.plot(nl_length,nl_T3_total, c='r', label='nl T3 Total')
+	# #nl T3B
+	# ax5.plot(nl_length,nl_T3B_used , c='m', label='nl T3B Used')
+	# ax5.plot(nl_length,nl_T3B_total, c='c', label='nl T3B Total')
+	# #nl T4
+	# ax5.plot(nl_length,nl_T4_used , c='y', label='nl T4 Used')
+	# ax5.plot(nl_length,nl_T4_total, c='k', label='nl T4 Total')
+
+	# #uk T1
+	# ax6.plot(uk_length,uk_T1_used, c='b', label='uk T1 Used')
+	# ax6.plot(uk_length,uk_T1_total, c='w', label='uk T1 Total')
+	# #uk T3
+	# ax6.plot(uk_length,uk_T3_used , c='g', label='uk T3 Used')
+	# ax6.plot(uk_length,uk_T3_total, c='r', label='uk T3 Total')
+	# #uk T3B
+	# ax6.plot(uk_length,uk_T3B_used , c='m', label='uk T3B Used')
+	# ax6.plot(uk_length,uk_T3B_total, c='c', label='uk T3B Total')
+	# #uk T4
+	# ax6.plot(uk_length,uk_T4_used , c='y', label='uk T4 Used')
+	# ax6.plot(uk_length,uk_T4_total, c='k', label='uk T4 Total')
+
+	# #jp T1
+	# ax7.plot(jp_length,jp_T1_used, c='b', label='jp T1 Used')
+	# ax7.plot(jp_length,jp_T1_total, c='w', label='jp T1 Total')
+	# #jp T3
+	# ax7.plot(jp_length,jp_T3_used , c='g', label='jp T3 Used')
+	# ax7.plot(jp_length,jp_T3_total, c='r', label='jp T3 Total')
+	# #jp T3B
+	# ax7.plot(jp_length,jp_T3B_used , c='m', label='jp T3B Used')
+	# ax7.plot(jp_length,jp_T3B_total, c='c', label='jp T3B Total')
+	# #jp T4
+	# ax7.plot(jp_length,jp_T4_used , c='y', label='jp T4 Used')
+	# ax7.plot(jp_length,jp_T4_total, c='k', label='jp T4 Total')
+
+
+	# #hk T1
+	# ax8.plot(hk_length,hk_T1_used, c='b', label='hk T1 Used')
+	# ax8.plot(hk_length,hk_T1_total, c='w', label='hk T1 Total')
+	# #hk T3
+	# ax8.plot(hk_length,hk_T3_used , c='g', label='hk T3 Used')
+	# ax8.plot(hk_length,hk_T3_total, c='r', label='hk T3 Total')
+	# #hk T3B
+	# ax8.plot(hk_length,hk_T3B_used , c='m', label='hk T3B Used')
+	# ax8.plot(hk_length,hk_T3B_total, c='c', label='hk T3B Total')
+	# #hk T4
+	# ax8.plot(hk_length,hk_T4_used , c='y', label='hk T4 Used')
+	# ax8.plot(hk_length,hk_T4_total, c='k', label='hk T4 Total')
+
+
+	# #to T1
+	# ax9.plot(to_length,to_T1_used, c='b', label='to T1 Used')
+	# ax9.plot(to_length,to_T1_total, c='w', label='to T1 Total')
+	# #to T3
+	# ax9.plot(to_length,to_T3_used , c='g', label='to T3 Used')
+	# ax9.plot(to_length,to_T3_total, c='r', label='to T3 Total')
+	# #to T3B
+	# ax9.plot(to_length,to_T3B_used , c='m', label='to T3B Used')
+	# ax9.plot(to_length,to_T3B_total, c='c', label='to T3B Total')
+	# #to T4
+	# ax9.plot(to_length,to_T4_used , c='y', label='to T4 Used')
+	# ax9.plot(to_length,to_T4_total, c='k', label='to T4 Total')
+
+	# #at T1
+	# ax10.plot(at_length,at_T1_used, c='b', label='at T1 Used')
+	# ax10.plot(at_length,at_T1_total, c='w', label='at T1 Total')
+	# #to T3
+	# ax10.plot(at_length,at_T3_used , c='g', label='at T3 Used')
+	# ax10.plot(at_length,at_T3_total, c='r', label='at T3 Total')
+	# #to T3B
+	# ax10.plot(at_length,at_T3B_used , c='m', label='at T3B Used')
+	# ax10.plot(at_length,at_T3B_total, c='c', label='at T3B Total')
+	# #to T4
+	# ax10.plot(at_length,at_T4_used , c='y', label='at T4 Used')
+	# ax10.plot(at_length,at_T4_total, c='k', label='at T4 Total')
+
+	# #plot plots for depts and tiers
+
+	# #ice
+	# ax11.plot(ice_length,ice_T1_used , c='y', marker="s", label='Ice Used')
+	# ax11.plot(ice_length,ice_T1_total , c='k', marker="s", label='Ice Total')
+
+	# #swip
+	# ax12.plot(swip_length,swip_T1_used , c='b', marker="s", label='SWIP Used')
+	# ax12.plot(swip_length,swip_T1_total , c='r', marker="s", label='SWIP Total')
+
+	# #it
+	# ax13.plot(it_length,it_T1_used , c='m', marker="s", label='IT Used')
+	# ax13.plot(it_length,it_T1_total , c='c', marker="s", label='IT Total')
+
+	# #wwoe
+	# ax14.plot(wwoe_length,wwoe_T1_used , c='g', marker="s", label='WWOE Used')
+	# ax14.plot(wwoe_length,wwoe_T1_total , c='w', marker="s", label='WWOE Total')
+	
+	# ax1.legend(loc='upper left')
+	# ax2.legend(loc='upper left')
+	# ax3.legend(loc='upper left')
+	# ax4.legend(loc='upper left')
+	# ax5.legend(loc='upper left')
+	# ax6.legend(loc='upper left')
+	# ax7.legend(loc='upper left')
+	# ax8.legend(loc='upper left')
+	# ax9.legend(loc='upper left')
+	# ax10.legend(loc='upper left')
+	# ax11.legend(loc='upper left')
+	# ax12.legend(loc='upper left')
+	# ax13.legend(loc='upper left')
+	# ax14.legend(loc='upper left')
+
+	
+	# plt.show()
 
 def uniq(input):
   output = []
@@ -871,7 +951,7 @@ def calculate_isilon():
 		input_file = open("jackfinal.txt", "r")
 	except:
 		#if file can't be read, exit
-		print "Could not read file:", filename
+		print "Could not read file:", input_file
    		sys.exit()
 
 	#iterate through lines of output
