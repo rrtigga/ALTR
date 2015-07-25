@@ -74,10 +74,6 @@ def main():
 		#print netapp table
 		#print (str(netapp_date[i])+"," +netapp_time[i]+","+str(netapp_vendors[i])+"," +str(netapp_site[i])+ ","+ str(netapp_dept[i])+ ","+ str(netapp_filer[i])+ ","+str(netapp_T1[i])+ ","+str(netapp_T3[i])+","+ str(netapp_T3B[i])+ ","+str(netapp_T4[i])+","+ str(netapp_aggr[i])+ ","+str(netapp_total[i])+ ","+str(netapp_used[i])+","+ str(netapp_avail[i]))
 
-	output.write("\n")
-	output.write("\n")
-	output.write("#Date,Time,Vendor,Site,Dept,filer,T1_GB,T3_GB,T3B_GB,T4_GB,aggr,total,used,avail \n")
-	output.write("\n")
 	for i in range(len(isilon_site)):
 		output.write(str(isilon_date[i])+","+isilon_time[i]+","+str(isilon_vendors[i])+","+ str(isilon_site[i])+","+ str(isilon_dept[i])+","+ str(isilon_filer[i])+","+ str(isilon_T1[i])+","+ str(isilon_T3[i])+","+ str(isilon_T3B[i])+","+ str(isilon_T4[i])+","+ str(isilon_aggr[i])+","+ str(isilon_total[i])+","+ str(isilon_used[i])+ ","+str(isilon_avail[i])+"\n")
 		#printing isilon table
@@ -123,12 +119,8 @@ def main():
 		netapp_T3B_raw.append(float(netapp_T3B[i])/.55)
 		netapp_T4_raw.append(float(netapp_T4[i])/.55)
 
-
-
-
 	#print total_storage
 	#print used_storage
-
 	total_storageList=[]
 	used_storageList =[]
 	total_storageList.append(total_storage)
@@ -651,10 +643,13 @@ def main():
 	
 
 
+
+
    	total_usage_date_store=[]
 
 	#iterate through lines of output
 	#get the number of dates and different dates in order to generate the graphs
+
 	for i, line in enumerate(input_file):
 		if(line =='\n'):
 			continue
@@ -663,7 +658,7 @@ def main():
 				line_store=line.split(",")
 				total_usage_date_store.append(line_store[0])
 
-	print uniq(total_usage_date_store)
+	unique_dates= uniq(total_usage_date_store)
 
 
 	dept_site_usage_date_store=[]
@@ -686,54 +681,43 @@ def main():
 				line_store=line.split(",")
 				dept_site_usage_date_store.append(line_store[0])
 
-	print uniq(dept_site_usage_date_store)
-
-
 	
 
+	
+	#get the number of dates and different dates in order to generate the graphs
 
+	total_storage_graphs=[0]*len(unique_dates)
+	used_storage_graphs=[0]*len(unique_dates)
 
+	
+	for j in range(len(unique_dates)):
+		
+		try:
+		#open input file
+			input_file = open("total_usage1.txt", "r")
+		except:
+			#if file can't be read, exit
+			print "Could not read file:", input_file
+   			sys.exit()
+		
+		for i, line in enumerate(input_file):
+			if(line =='\n'):
+				continue
+			if("#" in line):
+				continue
+			else:
+				#adding the proper total storage and used storage in correspondence with the dates
+				line_store = line.split(",")
+				if(unique_dates[j] in line):
+					total_storage_graphs[j]+=float(line_store[11])
+					used_storage_graphs[j]+=float(line_store[12])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	print total_storage_graphs				
 
 
 
 	# #start plot figures
-	# fig = plt.figure()
+	fig = plt.figure()
 	# fig2= plt.figure()
 
 	# #by site by tier
@@ -753,7 +737,7 @@ def main():
 	# fig13=plt.figure()
 	# fig14=plt.figure()
 
-	# ax1 = fig.add_subplot(111)
+	ax1 = fig.add_subplot(111)
 	# ax2= fig2.add_subplot(111)
 
 	# #by site by tier
@@ -773,10 +757,16 @@ def main():
 	# ax13=fig13.add_subplot(111)
 	# ax14=fig14.add_subplot(111)
 
+	man=[]
+	man.append(1)
+	man.append(2)
 
 	# #full storage mockup
-	# ax1.plot(mockup, used_storageList, c='b', label='Full Storage Used')
-	# ax1.plot(mockup,total_storageList, c='r', label='Full Storage Total')
+	ax1.plot(man, used_storage_graphs, c='b', label='Full Storage Used')
+	ax1.plot(man,total_storage_graphs, c='r', label='Full Storage Total')
+	
+
+
 
 	# ax2.plot(mockup2,netapp_T1_raw , c='b', label='T1 Raw')
 	# ax2.plot(mockup2,netapp_T3_raw, c='r', label='T3 Raw')
@@ -785,7 +775,7 @@ def main():
 
 
 	# #plot plots for tier and site
-	# #sj T1
+	# #sj T1 
 	# ax3.plot(sj_length,sj_T1_used, c='b', label='SJ T1 Used')
 	# ax3.plot(sj_length,sj_T1_total, c='w', label='SJ T1 Total')
 	# #sj T3
@@ -909,7 +899,7 @@ def main():
 	# ax14.plot(wwoe_length,wwoe_T1_used , c='g', marker="s", label='WWOE Used')
 	# ax14.plot(wwoe_length,wwoe_T1_total , c='w', marker="s", label='WWOE Total')
 	
-	# ax1.legend(loc='upper left')
+	ax1.legend(loc='upper left')
 	# ax2.legend(loc='upper left')
 	# ax3.legend(loc='upper left')
 	# ax4.legend(loc='upper left')
@@ -925,7 +915,7 @@ def main():
 	# ax14.legend(loc='upper left')
 
 	
-	# plt.show()
+	#plt.show()
 
 def uniq(input):
   output = []
