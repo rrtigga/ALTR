@@ -712,7 +712,6 @@ def main():
 					total_storage_graphs[j]+=float(line_store[11])
 					used_storage_graphs[j]+=float(line_store[12])
 
-	print total_storage_graphs				
 
 
 
@@ -757,13 +756,15 @@ def main():
 	# ax13=fig13.add_subplot(111)
 	# ax14=fig14.add_subplot(111)
 
-	man=[]
-	man.append(1)
-	man.append(2)
+	count_date=[]
+	for i in range(len(unique_dates)):
+		count_date.append(i)
+
 
 	# #full storage mockup
-	ax1.plot(man, used_storage_graphs, c='b', label='Full Storage Used')
-	ax1.plot(man,total_storage_graphs, c='r', label='Full Storage Total')
+	ax1.plot(count_date, used_storage_graphs, c='b', label='Full Storage Used')
+	ax1.plot(count_date,total_storage_graphs, c='r', label='Full Storage Total')
+
 	
 
 
@@ -915,7 +916,9 @@ def main():
 	# ax14.legend(loc='upper left')
 
 	
-	#plt.show()
+
+	plt.xticks(count_date, unique_dates)
+	plt.show()
 
 def uniq(input):
   output = []
