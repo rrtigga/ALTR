@@ -787,6 +787,7 @@ def main():
 				line_store = line.split(",")
 				if(unique_dates[j] in line):
 
+
 					#plot 1 
 					total_storage_graphs[j]+=float(line_store[11])
 					used_storage_graphs[j]+=float(line_store[12])
@@ -797,8 +798,9 @@ def main():
 					netapp_T3B_raw_graphs[j]+=float(line_store[8])
 					netapp_T4_raw_graphs[j]+=float(line_store[9])
 
+
 					#plot 3-10
-					if("sj" in line_store[4]):
+					if("sj" in line_store[3]):
 						sj_T1_used_graphs[j]+=float(line_store[6])
 						sj_T1_total_graphs[j]+=float(line_store[11])
 						sj_T3_total_graphs[j]+=float(line_store[7])
@@ -811,7 +813,7 @@ def main():
 						sj_T4_used_graphs[j]+=float(line_store[9])
 						sj_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("pg" in line_store[4]):
+					elif("pg" in line_store[3]):
 						pg_T1_used_graphs[j]+=float(line_store[6])
 						pg_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -824,7 +826,7 @@ def main():
 						pg_T4_used_graphs[j]+=float(line_store[9])
 						pg_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("nl" in line_store[4]):
+					elif("nl" in line_store[3]):
 						nl_T1_used_graphs[j]+=float(line_store[6])
 						nl_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -837,7 +839,7 @@ def main():
 						nl_T4_used_graphs[j]+=float(line_store[9])
 						nl_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("uk" in line_store[4]):
+					elif("uk" in line_store[3]):
 						uk_T1_used_graphs[j]+=float(line_store[6])
 						uk_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -850,7 +852,7 @@ def main():
 						uk_T4_used_graphs[j]+=float(line_store[9])
 						uk_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("jp" in line_store[4]):
+					elif("jp" in line_store[3]):
 						jp_T1_used_graphs[j]+=float(line_store[6])
 						jp_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -863,7 +865,7 @@ def main():
 						jp_T4_used_graphs[j]+=float(line_store[9])
 						jp_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("hk" in line_store[4]):
+					elif("hk" in line_store[3]):
 						hk_T1_used_graphs[j]+=float(line_store[6])
 						hk_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -876,7 +878,7 @@ def main():
 						hk_T4_used_graphs[j]+=float(line_store[9])
 						hk_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("to" in line_store[4]):
+					elif("to" in line_store[3]):
 						to_T1_used_graphs[j]+=float(line_store[6])
 						to_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -889,7 +891,7 @@ def main():
 						to_T4_used_graphs[j]+=float(line_store[9])
 						to_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("at" in line_store[4]):
+					elif("at" in line_store[3]):
 						at_T1_used_graphs[j]+=float(line_store[6])
 						at_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -903,7 +905,7 @@ def main():
 						at_T4_total_graphs[j]+=float(line_store[11])
 
 					#iterate through isilon for site and tier
-					if("sj" in line_store[4]):
+					if("sj" in line_store[3]):
 						sj_T1_used_graphs[j]+=float(line_store[6])
 						sj_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -916,7 +918,7 @@ def main():
 						sj_T4_used_graphs[j]+=float(line_store[9])
 						sj_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("pg" in line_store[4]):
+					elif("pg" in line_store[3]):
 						pg_T1_used_graphs[j]+=float(line_store[6])
 						pg_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -929,7 +931,7 @@ def main():
 						pg_T4_used_graphs[j]+=float(line_store[9])
 						pg_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("nl" in line_store[4]):
+					elif("nl" in line_store[3]):
 						nl_T1_used_graphs[j]+=float(line_store[6])
 						nl_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -942,7 +944,7 @@ def main():
 						nl_T4_used_graphs[j]+=float(line_store[9])
 						nl_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("uk" in line_store[4]):
+					elif("uk" in line_store[3]):
 						uk_T1_used_graphs[j]+=float(line_store[6])
 						uk_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -955,7 +957,7 @@ def main():
 						uk_T4_used_graphs[j]+=float(line_store[9])
 						uk_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("jp" in line_store[4]):
+					elif("jp" in line_store[3]):
 						jp_T1_used_graphs[j]+=float(line_store[6])
 						jp_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -968,7 +970,7 @@ def main():
 						jp_T4_used_graphs[j]+=float(line_store[9])
 						jp_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("hk" in line_store[4]):
+					elif("hk" in line_store[3]):
 						hk_T1_used_graphs[j]+=float(line_store[6])
 						hk_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -981,7 +983,8 @@ def main():
 						hk_T4_used_graphs[j]+=float(line_store[9])
 						hk_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("to" in line_store[4]):
+					elif("to" in line_store[3]):
+
 						to_T1_used_graphs[j]+=float(line_store[6])
 						to_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -994,7 +997,7 @@ def main():
 						to_T4_used_graphs[j]+=float(line_store[9])
 						to_T4_total_graphs[j]+=float(line_store[11])
 
-					elif("at" in line_store[4]):
+					elif("at" in line_store[3]):
 						at_T1_used_graphs[j]+=float(line_store[6])
 						at_T1_total_graphs[j]+=float(line_store[11])
 						
@@ -1006,12 +1009,6 @@ def main():
 						
 						at_T4_used_graphs[j]+=float(line_store[9])
 						at_T4_total_graphs[j]+=float(line_store[11])
-
-
-
-
-
-
 
 
 	# #start plot figures
