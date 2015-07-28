@@ -767,6 +767,48 @@ def main():
 	at_T4_total_graphs=[0]*len(unique_dates)
 
 
+
+
+	#all lists of dpts 
+	#department and tiers lists
+	ice_T1_used_graphs=[0]*len(unique_dates)
+	ice_T3_used_graphs=[0]*len(unique_dates)
+	ice_T3B_used_graphs=[0]*len(unique_dates)
+	ice_T4_used_graphs=[0]*len(unique_dates)
+	ice_T1_total_graphs=[0]*len(unique_dates)
+	ice_T3_total_graphs=[0]*len(unique_dates)
+	ice_T3B_total_graphs=[0]*len(unique_dates)
+	ice_T4_total_graphs=[0]*len(unique_dates)
+
+	swip_T1_used_graphs=[0]*len(unique_dates)
+	swip_T3_used_graphs=[0]*len(unique_dates)
+	swip_T3B_used_graphs=[0]*len(unique_dates)
+	swip_T4_used_graphs=[0]*len(unique_dates)
+	swip_T1_total_graphs=[0]*len(unique_dates)
+	swip_T3_total_graphs=[0]*len(unique_dates)
+	swip_T3B_total_graphs=[0]*len(unique_dates)
+	swip_T4_total_graphs=[0]*len(unique_dates)
+
+	it_T1_used_graphs=[0]*len(unique_dates)
+	it_T3_used_graphs=[0]*len(unique_dates)
+	it_T3B_used_graphs=[0]*len(unique_dates)
+	it_T4_used_graphs=[0]*len(unique_dates)
+	it_T1_total_graphs=[0]*len(unique_dates)
+	it_T3_total_graphs=[0]*len(unique_dates)
+	it_T3B_total_graphs=[0]*len(unique_dates)
+	it_T4_total_graphs=[0]*len(unique_dates)
+
+	wwoe_T1_used_graphs=[0]*len(unique_dates)
+	wwoe_T3_used_graphs=[0]*len(unique_dates)
+	wwoe_T3B_used_graphs=[0]*len(unique_dates)
+	wwoe_T4_used_graphs=[0]*len(unique_dates)
+	wwoe_T1_total_graphs=[0]*len(unique_dates)
+	wwoe_T3_total_graphs=[0]*len(unique_dates)
+	wwoe_T3B_total_graphs=[0]*len(unique_dates)
+	wwoe_T4_total_graphs=[0]*len(unique_dates)
+
+
+
 	for j in range(len(unique_dates)):
 		
 		try:
@@ -1011,6 +1053,104 @@ def main():
 						at_T4_total_graphs[j]+=float(line_store[11])
 
 
+
+
+					#here are the checks for dpts
+					#plots 11-14
+
+
+					if(("itnas01a" in line_store[4]) or ("itnas01b" in line_store[4])):
+						ice_T1_used_graphs[j]+=float(line_store[6])
+						ice_T3_used_graphs[j]+=float(line_store[7])
+						ice_T3B_used_graphs[j]+=float(line_store[8])
+						ice_T4_used_graphs[j]+=float(line_store[9])
+
+						ice_T1_total_graphs[j]+=float(line_store[11])
+						ice_T3_total_graphs[j]+=float(line_store[11])
+						ice_T3B_total_graphs[j]+=float(line_store[11])
+						ice_T4_total_graphs[j]+=float(line_store[11])
+
+					elif(("swnas01a" in line_store[4]) or ("swnas01b" in line_store[4])):
+						swip_T1_used_graphs[j]+=float(line_store[6])
+						swip_T3_used_graphs[j]+=float(line_store[7])
+						swip_T3B_used_graphs[j]+=float(line_store[8])
+						swip_T4_used_graphs[j]+=float(line_store[9])
+
+						swip_T1_total_graphs[j]+=float(line_store[11])
+						swip_T3_total_graphs[j]+=float(line_store[11])
+						swip_T3B_total_graphs[j]+=float(line_store[11])
+						swip_T4_total_graphs[j]+=float(line_store[11])
+					
+					elif("itcrncnas01" in line_store[4]):
+						it_T1_used_graphs[j]+=float(line_store[6])
+						it_T3_used_graphs[j]+=float(line_store[7])
+						it_T3B_used_graphs[j]+=float(line_store[8])
+						it_T4_used_graphs[j]+=float(line_store[9])
+
+						it_T1_total_graphs[j]+=float(line_store[11])
+						it_T3_total_graphs[j]+=float(line_store[11])
+						it_T3B_total_graphs[j]+=float(line_store[11])
+						it_T4_total_graphs[j]+=float(line_store[11])
+
+					elif(("engnas03a" in line_store[4]) or ("engnas03b" in line_store[4])):
+						wwoe_T1_used_graphs[j]+=float(line_store[6])
+						wwoe_T3_used_graphs[j]+=float(line_store[7])
+						wwoe_T3B_used_graphs[j]+=float(line_store[8])
+						wwoe_T4_used_graphs[j]+=float(line_store[9])
+
+						wwoe_T1_total_graphs[j]+=float(line_store[11])
+						wwoe_T3_total_graphs[j]+=float(line_store[11])
+						wwoe_T3B_total_graphs[j]+=float(line_store[11])
+						wwoe_T4_total_graphs[j]+=float(line_store[11])
+
+
+					if(("itnas01a" in line_store[4]) or ("itnas01b" in line_store[4])):
+						ice_T1_used_graphs[j]+=float(line_store[6])
+						ice_T3_used_graphs[j]+=float(line_store[7])
+						ice_T3B_used_graphs[j]+=float(line_store[8])
+						ice_T4_used_graphs[j]+=float(line_store[9])
+
+						ice_T1_total_graphs[j]+=float(line_store[11])
+						ice_T3_total_graphs[j]+=float(line_store[11])
+						ice_T3B_total_graphs[j]+=float(line_store[11])
+						ice_T4_total_graphs[j]+=float(line_store[11])
+
+					elif(("swnas01a" in line_store[4]) or ("swnas01b" in line_store[4])):
+						swip_T1_used_graphs[j]+=float(line_store[6])
+						swip_T3_used_graphs[j]+=float(line_store[7])
+						swip_T3B_used_graphs[j]+=float(line_store[8])
+						swip_T4_used_graphs[j]+=float(line_store[9])
+
+						swip_T1_total_graphs[j]+=float(line_store[11])
+						swip_T3_total_graphs[j]+=float(line_store[11])
+						swip_T3B_total_graphs[j]+=float(line_store[11])
+						swip_T4_total_graphs[j]+=float(line_store[11])
+					
+
+					elif(("itcrncnas01" in line_store[4])):
+						it_T1_used_graphs[j]+=float(line_store[6])
+						it_T3_used_graphs[j]+=float(line_store[7])
+						it_T3B_used_graphs[j]+=float(line_store[8])
+						it_T4_used_graphs[j]+=float(line_store[9])
+
+						it_T1_total_graphs[j]+=float(line_store[11])
+						it_T3_total_graphs[j]+=float(line_store[11])
+						it_T3B_total_graphs[j]+=float(line_store[11])
+						it_T4_total_graphs[j]+=float(line_store[11])
+
+					elif(("engnas03a" in line_store[4]) or ("engnas03b" in line_store[4])):
+						wwoe_T1_used_graphs[j]+=float(line_store[6])
+						wwoe_T3_used_graphs[j]+=float(line_store[7])
+						wwoe_T3B_used_graphs[j]+=float(line_store[8])
+						wwoe_T4_used_graphs[j]+=float(line_store[9])
+
+						wwoe_T1_total_graphs[j]+=float(line_store[11])
+						wwoe_T3_total_graphs[j]+=float(line_store[11])
+						wwoe_T3B_total_graphs[j]+=float(line_store[11])
+						wwoe_T4_total_graphs[j]+=float(line_store[11])
+
+
+
 	# #start plot figures
 	fig = plt.figure()
 	fig2= plt.figure()
@@ -1027,10 +1167,10 @@ def main():
 
 
 	# #by dept by tier
-	# fig11=plt.figure()
-	# fig12=plt.figure()
-	# fig13=plt.figure()
-	# fig14=plt.figure()
+	fig11=plt.figure()
+	fig12=plt.figure()
+	fig13=plt.figure()
+	fig14=plt.figure()
 
 	ax1 = fig.add_subplot(111)
 	ax2= fig2.add_subplot(111)
@@ -1047,10 +1187,10 @@ def main():
 
 
 	# #by dept by tier
-	# ax11=fig11.add_subplot(111)
-	# ax12=fig12.add_subplot(111)
-	# ax13=fig13.add_subplot(111)
-	# ax14=fig14.add_subplot(111)
+	ax11=fig11.add_subplot(111)
+	ax12=fig12.add_subplot(111)
+	ax13=fig13.add_subplot(111)
+	ax14=fig14.add_subplot(111)
 
 	count_date=[]
 	for i in range(len(unique_dates)):
@@ -1181,20 +1321,20 @@ def main():
 	# #plot plots for depts and tiers
 
 	# #ice
-	# ax11.plot(ice_length,ice_T1_used , c='y', marker="s", label='Ice Used')
-	# ax11.plot(ice_length,ice_T1_total , c='k', marker="s", label='Ice Total')
+	ax11.plot(count_date,ice_T1_used_graphs , c='y', marker="s", label='Ice Used')
+	ax11.plot(count_date,ice_T1_total_graphs , c='k', marker="s", label='Ice Total')
 
-	# #swip
-	# ax12.plot(swip_length,swip_T1_used , c='b', marker="s", label='SWIP Used')
-	# ax12.plot(swip_length,swip_T1_total , c='r', marker="s", label='SWIP Total')
+	#swip
+	ax12.plot(count_date,swip_T1_used_graphs , c='b', marker="s", label='SWIP Used')
+	ax12.plot(count_date,swip_T1_total_graphs , c='r', marker="s", label='SWIP Total')
 
-	# #it
-	# ax13.plot(it_length,it_T1_used , c='m', marker="s", label='IT Used')
-	# ax13.plot(it_length,it_T1_total , c='c', marker="s", label='IT Total')
+	#it
+	ax13.plot(count_date,it_T1_used_graphs , c='m', marker="s", label='IT Used')
+	ax13.plot(count_date,it_T1_total_graphs , c='c', marker="s", label='IT Total')
 
-	# #wwoe
-	# ax14.plot(wwoe_length,wwoe_T1_used , c='g', marker="s", label='WWOE Used')
-	# ax14.plot(wwoe_length,wwoe_T1_total , c='w', marker="s", label='WWOE Total')
+	#wwoe
+	ax14.plot(count_date,wwoe_T1_used_graphs , c='g', marker="s", label='WWOE Used')
+	ax14.plot(count_date,wwoe_T1_total_graphs , c='w', marker="s", label='WWOE Total')
 	
 	ax1.legend(loc='upper left')
 	ax2.legend(loc='upper left')
@@ -1206,14 +1346,26 @@ def main():
 	ax8.legend(loc='upper left')
 	ax9.legend(loc='upper left')
 	ax10.legend(loc='upper left')
-	#ax11.legend(loc='upper left')
-	#ax12.legend(loc='upper left')
-	#ax13.legend(loc='upper left')
-	#ax14.legend(loc='upper left')
+	ax11.legend(loc='upper left')
+	ax12.legend(loc='upper left')
+	ax13.legend(loc='upper left')
+	ax14.legend(loc='upper left')
 
 	
-
-	plt.xticks(count_date, unique_dates)
+	plt.setp(ax1,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax2,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax3,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax4,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax5,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax6,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax7,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax8,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax9,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax10,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax11,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax12,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax13,xticks=count_date,xticklabels=unique_dates)
+	plt.setp(ax14,xticks=count_date,xticklabels=unique_dates)
 	plt.show()
 
 def uniq(input):
