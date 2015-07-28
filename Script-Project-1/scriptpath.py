@@ -553,7 +553,7 @@ def main():
 
 
 	#create department site file to append total usage
-	output = open("/storage/data/GLOBAL/usage_collection/dept_site_usage.txt", "a")
+	output = open("dept_site_usage1.txt", "a")
 
 	output.write("#Departments\n")
 	output.write("#Date, Time, T1_used, T1_total,T3_used, T3_total,T3B_used, T3B_total,T4_used, T4_total\n")
@@ -631,7 +631,7 @@ def main():
 	#opening the total usage file to get the total usages dates 
 	try:
 		#open input file
-		input_file = open("/storage/data/GLOBAL/storage_data.txt", "r")
+	output = open("/storage/data/GLOBAL/usage_collection/dept_site_usage.txt", "a")
 	except:
 		#if file can't be read, exit
 		print "Could not read file:", input_file
@@ -657,7 +657,7 @@ def main():
 	
 	try:
 		#open input file
-		input_file = open("dept_site_usage1.txt", "r")
+		input_file = open("/storage/data/GLOBAL/storage_data.txt", "r")
 	except:
 		#if file can't be read, exit
 		print "Could not read file:", input_file
@@ -809,7 +809,7 @@ def main():
 		
 		try:
 		#open input file
-			input_file = open("total_usage1.txt", "r")
+		input_file = open("/storage/data/GLOBAL/storage_data.txt", "r")
 		except:
 			#if file can't be read, exit
 			print "Could not read file:", input_file
@@ -1376,20 +1376,35 @@ def main():
 
 	
 	plt.setp(ax1,xticks=count_date,xticklabels=unique_dates)
+	fig.savefig('images/ax1.png')
 	plt.setp(ax2,xticks=count_date,xticklabels=unique_dates)
+	fig2.savefig('images/ax2.png')
 	plt.setp(ax3,xticks=count_date,xticklabels=unique_dates)
+	fig3.savefig('images/ax3.png')
 	plt.setp(ax4,xticks=count_date,xticklabels=unique_dates)
+	fig4.savefig('images/ax4.png')
 	plt.setp(ax5,xticks=count_date,xticklabels=unique_dates)
+	fig5.savefig('images/ax5.png')
 	plt.setp(ax6,xticks=count_date,xticklabels=unique_dates)
+	fig6.savefig('images/ax6.png')
 	plt.setp(ax7,xticks=count_date,xticklabels=unique_dates)
+	fig7.savefig('images/ax7.png')
 	plt.setp(ax8,xticks=count_date,xticklabels=unique_dates)
+	fig8.savefig('images/ax8.png')
 	plt.setp(ax9,xticks=count_date,xticklabels=unique_dates)
+	fig9.savefig('images/ax9.png')
 	plt.setp(ax10,xticks=count_date,xticklabels=unique_dates)
+	fig10.savefig('images/ax10.png')
 	plt.setp(ax11,xticks=count_date,xticklabels=unique_dates)
+	fig11.savefig('images/ax11.png')
 	plt.setp(ax12,xticks=count_date,xticklabels=unique_dates)
+	fig12.savefig('images/ax12.png')
 	plt.setp(ax13,xticks=count_date,xticklabels=unique_dates)
+	fig13.savefig('images/ax13.png')
 	plt.setp(ax14,xticks=count_date,xticklabels=unique_dates)
-	plt.show()
+	fig14.savefig('images/ax14.png')
+
+
 
 def uniq(input):
   output = []
@@ -1576,7 +1591,7 @@ def calculate_netapp():
 
 	#open file name from user
 	try:
-		input_file = open("/storage/data/GLOBAL/storage_data.txt", "r")
+		input_file = open("jackfinal.txt", "r")
 
 	#throw exception if file cannot be read then exit
 	except:
